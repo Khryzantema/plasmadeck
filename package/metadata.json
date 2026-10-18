@@ -1,0 +1,37 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Khryzantema",
+                "Email": "klausdelimaluiz@proton.me"
+            }
+        ],
+        "BugReportUrl": "https://github.com/Khryzantema/plasmadeck/issues",
+        "Category": "System Information",
+        "Description": "GNOME-style Quick Settings menu with its own system tray and notification center",
+        "Description[cs]": "Nabídka rychlých nastavení ve stylu GNOME s ikonami systémové části panelu",
+        "Description[de]": "Schnelleinstellungsmenü im GNOME-Stil mit den Symbolen des Systemabschnitts",
+        "Description[es]": "Menú de ajustes rápidos al estilo de GNOME, con los iconos de la bandeja del sistema",
+        "Description[fr]": "Menu de paramètres rapides inspiré de GNOME, avec les icônes de la boîte à miniatures",
+        "Description[it]": "Menu di impostazioni rapide in stile GNOME, con le icone del vassoio di sistema",
+        "Description[ja]": "GNOME 風のクイック設定メニュー（システムトレイのアイコン付き）",
+        "Description[ko]": "시스템 트레이 아이콘이 포함된 GNOME 스타일의 빠른 설정 메뉴",
+        "Description[nl]": "Menu met snelle instellingen in GNOME-stijl, met de pictogrammen van het systeemvak",
+        "Description[pl]": "Menu szybkich ustawień w stylu GNOME z ikonami tacki systemowej",
+        "Description[pt]": "Menu de definições rápidas ao estilo do GNOME, com os ícones da bandeja do sistema",
+        "Description[pt_BR]": "Menu de configurações rápidas no estilo do GNOME, com os ícones da bandeja do sistema",
+        "Description[ru]": "Меню быстрых настроек в стиле GNOME со значками системного лотка",
+        "Description[tr]": "Sistem tepsisi simgelerini de içeren, GNOME tarzı hızlı ayarlar menüsü",
+        "Description[uk]": "Меню швидких налаштувань у стилі GNOME з піктограмами системного лотка",
+        "Description[zh_CN]": "GNOME 风格的快速设置菜单，并集成系统托盘图标",
+        "Description[zh_TW]": "GNOME 風格的快速設定選單，並整合系統匣圖示",
+        "Icon": "preferences-system-symbolic",
+        "Id": "io.github.khryzantema.plasmadeck",
+        "License": "GPL-2.0-or-later",
+        "Name": "PlasmaDeck",
+        "Version": "1.0.0",
+        "Website": "https://github.com/Khryzantema/plasmadeck"
+    },
+    "KPackageStructure": "Plasma/Applet",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

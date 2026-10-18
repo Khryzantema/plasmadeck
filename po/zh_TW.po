@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dev.quicksettings.plasmoid\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: package/contents/config/config.qml:11
+msgid "System Tray"
+msgstr "系統匣"
+
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+msgid "Bluetooth"
+msgstr "藍牙"
+
+#: package/contents/ui/BluetoothPage.qml:23
+msgid "Bluetooth Settings…"
+msgstr "藍牙設定…"
+
+#: package/contents/ui/BluetoothPage.qml:24
+msgid "No paired devices"
+msgstr "沒有已配對的裝置"
+
+#: package/contents/ui/BluetoothPage.qml:87
+msgid "Disconnecting…"
+msgstr "正在中斷連線…"
+
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+msgid "Connecting…"
+msgstr "正在連線…"
+
+#: package/contents/ui/BluetoothPage.qml:91
+msgid "Connected · %1% battery"
+msgstr "已連線 · 電量 %1%"
+
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+msgid "Connected"
+msgstr "已連線"
+
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+msgid "Not connected"
+msgstr "未連線"
+
+#: package/contents/ui/ConfigTray.qml:82
+msgid "No applications are using the system tray"
+msgstr "沒有應用程式在使用系統匣"
+
+#: package/contents/ui/ConfigTray.qml:117
+msgid "Not running"
+msgstr "未執行"
+
+#: package/contents/ui/ConfigTray.qml:118
+msgid "Currently passive (hidden by the application)"
+msgstr "目前為被動狀態（被應用程式隱藏）"
+
+#: package/contents/ui/ConfigTray.qml:123
+msgid "Show"
+msgstr "顯示"
+
+#: package/contents/ui/ConfigTray.qml:129
+msgid "Pin to start"
+msgstr "釘選到開頭"
+
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+msgid "Power Mode"
+msgstr "電源模式"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Unmute"
+msgstr "取消靜音"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Mute"
+msgstr "靜音"
+
+#: package/contents/ui/FullRepresentation.qml:223
+msgid "Volume of %1"
+msgstr "%1 的音量"
+
+#: package/contents/ui/FullRepresentation.qml:232
+msgid "Select audio device"
+msgstr "選擇音訊裝置"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Unmute microphone"
+msgstr "取消麥克風靜音"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Mute microphone"
+msgstr "麥克風靜音"
+
+#: package/contents/ui/FullRepresentation.qml:250
+msgid "Microphone volume of %1"
+msgstr "%1 的麥克風音量"
+
+#: package/contents/ui/FullRepresentation.qml:259
+msgid "Select microphone"
+msgstr "選擇麥克風"
+
+#: package/contents/ui/FullRepresentation.qml:278
+msgid "Brightness of %1"
+msgstr "%1 的亮度"
+
+#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:306
+msgid "Show Wi-Fi networks"
+msgstr "顯示 Wi-Fi 網路"
+
+#: package/contents/ui/FullRepresentation.qml:320
+msgid "Show Bluetooth devices"
+msgstr "顯示藍牙裝置"
+
+#: package/contents/ui/FullRepresentation.qml:337
+msgid "Choose power mode"
+msgstr "選擇電源模式"
+
+#: package/contents/ui/FullRepresentation.qml:348
+msgid "Airplane Mode"
+msgstr "飛航模式"
+
+#: package/contents/ui/FullRepresentation.qml:358
+msgid "Do Not Disturb"
+msgstr "勿擾模式"
+
+#: package/contents/ui/FullRepresentation.qml:370
+msgid "Night Light"
+msgstr "夜間模式"
+
+#: package/contents/ui/FullRepresentation.qml:381
+msgid "Dark Style"
+msgstr "深色風格"
+
+#: package/contents/ui/FullRepresentation.qml:390
+msgid "Battery"
+msgstr "電池"
+
+#: package/contents/ui/FullRepresentation.qml:392
+msgid "%1% · charging"
+msgstr "%1% · 充電中"
+
+#: package/contents/ui/FullRepresentation.qml:393
+msgctxt "Battery percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/FullRepresentation.qml:406
+msgid "Clipboard"
+msgstr "剪貼簿"
+
+#: package/contents/ui/FullRepresentation.qml:407
+msgid "Empty"
+msgstr "空"
+
+#: package/contents/ui/FullRepresentation.qml:410
+msgid "Show clipboard history"
+msgstr "顯示剪貼簿歷史"
+
+#: package/contents/ui/FullRepresentation.qml:420
+msgid "Screenshot"
+msgstr "螢幕擷圖"
+
+#: package/contents/ui/WifiPage.qml:24
+msgid "All Networks Settings…"
+msgstr "所有網路設定…"
+
+#: package/contents/ui/WifiPage.qml:25
+msgid "No networks found"
+msgstr "找不到網路"
+
+#: package/contents/ui/WifiPage.qml:104
+msgid "Saved"
+msgstr "已儲存"
+
+#: package/contents/ui/WifiPage.qml:134
+msgid "Password"
+msgstr "密碼"
+
+#: package/contents/ui/WifiPage.qml:135
+msgid "Password for %1"
+msgstr "%1 的密碼"
+
+#: package/contents/ui/WifiPage.qml:147
+msgid "Connect"
+msgstr "連線"
+
+#: package/contents/ui/backends/AudioBackend.qml:61
+msgid "Unknown device"
+msgstr "未知的裝置"
+
+#: package/contents/ui/backends/BluetoothBackend.qml:31
+msgid "%1 device"
+msgid_plural "%1 devices"
+msgstr[0] "%1 個裝置"
+
+#: package/contents/ui/backends/DndBackend.qml:48
+msgid "Until %1"
+msgstr "直到 %1"
+
+#: package/contents/ui/backends/NightLightBackend.qml:32
+msgid "Suspended"
+msgstr "已暫停"
+
+#: package/contents/ui/backends/NightLightBackend.qml:35
+msgid "Transitioning"
+msgstr "正在轉換"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Day"
+msgstr "白天"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Night"
+msgstr "夜晚"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:40 package/contents/ui/components/NotificationList.qml:70
+msgid "Notification service not available"
+msgstr "通知服務無法使用"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:42
+msgid "%1 unread notification"
+msgid_plural "%1 unread notifications"
+msgstr[0] "%1 則未讀通知"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:37
+msgid "Power Saver"
+msgstr "省電"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:39
+msgid "Balanced"
+msgstr "平衡"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:41
+msgid "Performance"
+msgstr "效能"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Input"
+msgstr "聲音輸入"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Output"
+msgstr "聲音輸出"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:111
+msgid "Raise maximum volume"
+msgstr "提高最大音量"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:120
+msgid "Prolonged use of this feature will damage the device's speakers. Only use it temporarily to make quiet media audible."
+msgstr "長時間使用此功能會損壞裝置的喇叭。僅在需要聽清楚音量過小的媒體時暫時使用。"
+
+#: package/contents/ui/components/ClipboardMenu.qml:41
+msgid "Clipboard History"
+msgstr "剪貼簿歷史"
+
+#: package/contents/ui/components/ClipboardMenu.qml:47 package/contents/ui/components/NotificationList.qml:37
+msgid "Clear"
+msgstr "清除"
+
+#: package/contents/ui/components/ClipboardMenu.qml:49
+msgid "Clear clipboard history"
+msgstr "清除剪貼簿歷史"
+
+#: package/contents/ui/components/ClipboardMenu.qml:62
+msgid "Clipboard is empty"
+msgstr "剪貼簿是空的"
+
+#: package/contents/ui/components/ClipboardMenu.qml:79
+msgid "Image"
+msgstr "影像"
+
+#: package/contents/ui/components/NotificationCard.qml:80
+msgid "Unread"
+msgstr "未讀"
+
+#: package/contents/ui/components/NotificationCard.qml:94
+msgid "Close"
+msgstr "關閉"
+
+#: package/contents/ui/components/NotificationCard.qml:98
+msgid "Close notification"
+msgstr "關閉通知"
+
+#: package/contents/ui/components/NotificationList.qml:31
+msgid "Notifications"
+msgstr "通知"
+
+#: package/contents/ui/components/NotificationList.qml:70
+msgid "No notifications"
+msgstr "沒有通知"
+
+#: package/contents/ui/components/PanelTrayItem.qml:36
+msgid "Needs attention"
+msgstr "需要注意"
+
+#: package/contents/ui/components/QuickToggle.qml:138 package/contents/ui/components/QuickToggle.qml:186
+msgid "Unavailable"
+msgstr "無法使用"
+
+#: package/contents/ui/components/SliderRow.qml:72
+msgctxt "Slider value as a percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/components/SubPage.qml:46
+msgid "Back"
+msgstr "返回"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Unpin from Start"
+msgstr "取消釘選開頭"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Pin to Start"
+msgstr "釘選到開頭"
+
+#: package/contents/ui/components/TrayMenu.qml:138
+msgid "Hide from PlasmaDeck"
+msgstr "從 PlasmaDeck 中隱藏"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: muted"
+msgstr "音量：靜音"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: %1%"
+msgstr "音量：%1%"
+
+#: package/contents/ui/main.qml:122
+msgid "Battery: %1%"
+msgstr "電池：%1%"
+

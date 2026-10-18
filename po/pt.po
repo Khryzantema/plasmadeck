@@ -1,0 +1,339 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dev.quicksettings.plasmoid\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: package/contents/config/config.qml:11
+msgid "System Tray"
+msgstr "Bandeja do sistema"
+
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/BluetoothPage.qml:23
+msgid "Bluetooth Settings…"
+msgstr "Definições de Bluetooth…"
+
+#: package/contents/ui/BluetoothPage.qml:24
+msgid "No paired devices"
+msgstr "Nenhum dispositivo emparelhado"
+
+#: package/contents/ui/BluetoothPage.qml:87
+msgid "Disconnecting…"
+msgstr "A desligar…"
+
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+msgid "Connecting…"
+msgstr "A ligar…"
+
+#: package/contents/ui/BluetoothPage.qml:91
+msgid "Connected · %1% battery"
+msgstr "Ligado · bateria a %1%"
+
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+msgid "Connected"
+msgstr "Ligado"
+
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+msgid "Not connected"
+msgstr "Não ligado"
+
+#: package/contents/ui/ConfigTray.qml:82
+msgid "No applications are using the system tray"
+msgstr "Nenhuma aplicação está a usar a bandeja do sistema"
+
+#: package/contents/ui/ConfigTray.qml:117
+msgid "Not running"
+msgstr "Não está em execução"
+
+#: package/contents/ui/ConfigTray.qml:118
+msgid "Currently passive (hidden by the application)"
+msgstr "Passivo de momento (oculto pela aplicação)"
+
+#: package/contents/ui/ConfigTray.qml:123
+msgid "Show"
+msgstr "Mostrar"
+
+#: package/contents/ui/ConfigTray.qml:129
+msgid "Pin to start"
+msgstr "Afixar no início"
+
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+msgid "Power Mode"
+msgstr "Modo de energia"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Unmute"
+msgstr "Ativar som"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Mute"
+msgstr "Silenciar"
+
+#: package/contents/ui/FullRepresentation.qml:223
+msgid "Volume of %1"
+msgstr "Volume de %1"
+
+#: package/contents/ui/FullRepresentation.qml:232
+msgid "Select audio device"
+msgstr "Selecionar dispositivo de áudio"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Unmute microphone"
+msgstr "Ativar microfone"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Mute microphone"
+msgstr "Silenciar microfone"
+
+#: package/contents/ui/FullRepresentation.qml:250
+msgid "Microphone volume of %1"
+msgstr "Volume do microfone de %1"
+
+#: package/contents/ui/FullRepresentation.qml:259
+msgid "Select microphone"
+msgstr "Selecionar microfone"
+
+#: package/contents/ui/FullRepresentation.qml:278
+msgid "Brightness of %1"
+msgstr "Brilho de %1"
+
+#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:306
+msgid "Show Wi-Fi networks"
+msgstr "Mostrar redes Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:320
+msgid "Show Bluetooth devices"
+msgstr "Mostrar dispositivos Bluetooth"
+
+#: package/contents/ui/FullRepresentation.qml:337
+msgid "Choose power mode"
+msgstr "Escolher modo de energia"
+
+#: package/contents/ui/FullRepresentation.qml:348
+msgid "Airplane Mode"
+msgstr "Modo de voo"
+
+#: package/contents/ui/FullRepresentation.qml:358
+msgid "Do Not Disturb"
+msgstr "Não incomodar"
+
+#: package/contents/ui/FullRepresentation.qml:370
+msgid "Night Light"
+msgstr "Luz noturna"
+
+#: package/contents/ui/FullRepresentation.qml:381
+msgid "Dark Style"
+msgstr "Estilo escuro"
+
+#: package/contents/ui/FullRepresentation.qml:390
+msgid "Battery"
+msgstr "Bateria"
+
+#: package/contents/ui/FullRepresentation.qml:392
+msgid "%1% · charging"
+msgstr "%1% · a carregar"
+
+#: package/contents/ui/FullRepresentation.qml:393
+msgctxt "Battery percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/FullRepresentation.qml:406
+msgid "Clipboard"
+msgstr "Área de transferência"
+
+#: package/contents/ui/FullRepresentation.qml:407
+msgid "Empty"
+msgstr "Vazia"
+
+#: package/contents/ui/FullRepresentation.qml:410
+msgid "Show clipboard history"
+msgstr "Mostrar histórico da área de transferência"
+
+#: package/contents/ui/FullRepresentation.qml:420
+msgid "Screenshot"
+msgstr "Captura de ecrã"
+
+#: package/contents/ui/WifiPage.qml:24
+msgid "All Networks Settings…"
+msgstr "Definições de todas as redes…"
+
+#: package/contents/ui/WifiPage.qml:25
+msgid "No networks found"
+msgstr "Nenhuma rede encontrada"
+
+#: package/contents/ui/WifiPage.qml:104
+msgid "Saved"
+msgstr "Guardada"
+
+#: package/contents/ui/WifiPage.qml:134
+msgid "Password"
+msgstr "Palavra-passe"
+
+#: package/contents/ui/WifiPage.qml:135
+msgid "Password for %1"
+msgstr "Palavra-passe para %1"
+
+#: package/contents/ui/WifiPage.qml:147
+msgid "Connect"
+msgstr "Ligar"
+
+#: package/contents/ui/backends/AudioBackend.qml:61
+msgid "Unknown device"
+msgstr "Dispositivo desconhecido"
+
+#: package/contents/ui/backends/BluetoothBackend.qml:31
+msgid "%1 device"
+msgid_plural "%1 devices"
+msgstr[0] "%1 dispositivo"
+msgstr[1] "%1 dispositivos"
+
+#: package/contents/ui/backends/DndBackend.qml:48
+msgid "Until %1"
+msgstr "Até %1"
+
+#: package/contents/ui/backends/NightLightBackend.qml:32
+msgid "Suspended"
+msgstr "Suspensa"
+
+#: package/contents/ui/backends/NightLightBackend.qml:35
+msgid "Transitioning"
+msgstr "Em transição"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Day"
+msgstr "Dia"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Night"
+msgstr "Noite"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:40 package/contents/ui/components/NotificationList.qml:70
+msgid "Notification service not available"
+msgstr "Serviço de notificações indisponível"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:42
+msgid "%1 unread notification"
+msgid_plural "%1 unread notifications"
+msgstr[0] "%1 notificação não lida"
+msgstr[1] "%1 notificações não lidas"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:37
+msgid "Power Saver"
+msgstr "Poupança de energia"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:39
+msgid "Balanced"
+msgstr "Equilibrado"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:41
+msgid "Performance"
+msgstr "Desempenho"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Input"
+msgstr "Entrada de som"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Output"
+msgstr "Saída de som"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:111
+msgid "Raise maximum volume"
+msgstr "Aumentar o volume máximo"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:120
+msgid "Prolonged use of this feature will damage the device's speakers. Only use it temporarily to make quiet media audible."
+msgstr "A utilização prolongada desta funcionalidade danificará os altifalantes do dispositivo. Use-a apenas temporariamente para tornar audíveis conteúdos muito baixos."
+
+#: package/contents/ui/components/ClipboardMenu.qml:41
+msgid "Clipboard History"
+msgstr "Histórico da área de transferência"
+
+#: package/contents/ui/components/ClipboardMenu.qml:47 package/contents/ui/components/NotificationList.qml:37
+msgid "Clear"
+msgstr "Limpar"
+
+#: package/contents/ui/components/ClipboardMenu.qml:49
+msgid "Clear clipboard history"
+msgstr "Limpar histórico da área de transferência"
+
+#: package/contents/ui/components/ClipboardMenu.qml:62
+msgid "Clipboard is empty"
+msgstr "A área de transferência está vazia"
+
+#: package/contents/ui/components/ClipboardMenu.qml:79
+msgid "Image"
+msgstr "Imagem"
+
+#: package/contents/ui/components/NotificationCard.qml:80
+msgid "Unread"
+msgstr "Não lida"
+
+#: package/contents/ui/components/NotificationCard.qml:94
+msgid "Close"
+msgstr "Fechar"
+
+#: package/contents/ui/components/NotificationCard.qml:98
+msgid "Close notification"
+msgstr "Fechar notificação"
+
+#: package/contents/ui/components/NotificationList.qml:31
+msgid "Notifications"
+msgstr "Notificações"
+
+#: package/contents/ui/components/NotificationList.qml:70
+msgid "No notifications"
+msgstr "Sem notificações"
+
+#: package/contents/ui/components/PanelTrayItem.qml:36
+msgid "Needs attention"
+msgstr "Requer atenção"
+
+#: package/contents/ui/components/QuickToggle.qml:138 package/contents/ui/components/QuickToggle.qml:186
+msgid "Unavailable"
+msgstr "Indisponível"
+
+#: package/contents/ui/components/SliderRow.qml:72
+msgctxt "Slider value as a percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/components/SubPage.qml:46
+msgid "Back"
+msgstr "Voltar"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Unpin from Start"
+msgstr "Desafixar do início"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Pin to Start"
+msgstr "Afixar no início"
+
+#: package/contents/ui/components/TrayMenu.qml:138
+msgid "Hide from PlasmaDeck"
+msgstr "Ocultar do PlasmaDeck"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: muted"
+msgstr "Volume: silenciado"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: %1%"
+msgstr "Volume: %1%"
+
+#: package/contents/ui/main.qml:122
+msgid "Battery: %1%"
+msgstr "Bateria: %1%"
+

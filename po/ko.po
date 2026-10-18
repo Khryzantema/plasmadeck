@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dev.quicksettings.plasmoid\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: package/contents/config/config.qml:11
+msgid "System Tray"
+msgstr "시스템 트레이"
+
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+msgid "Bluetooth"
+msgstr "블루투스"
+
+#: package/contents/ui/BluetoothPage.qml:23
+msgid "Bluetooth Settings…"
+msgstr "블루투스 설정…"
+
+#: package/contents/ui/BluetoothPage.qml:24
+msgid "No paired devices"
+msgstr "페어링된 장치 없음"
+
+#: package/contents/ui/BluetoothPage.qml:87
+msgid "Disconnecting…"
+msgstr "연결 해제 중…"
+
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+msgid "Connecting…"
+msgstr "연결 중…"
+
+#: package/contents/ui/BluetoothPage.qml:91
+msgid "Connected · %1% battery"
+msgstr "연결됨 · 배터리 %1%"
+
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+msgid "Connected"
+msgstr "연결됨"
+
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+msgid "Not connected"
+msgstr "연결되지 않음"
+
+#: package/contents/ui/ConfigTray.qml:82
+msgid "No applications are using the system tray"
+msgstr "시스템 트레이를 사용하는 애플리케이션 없음"
+
+#: package/contents/ui/ConfigTray.qml:117
+msgid "Not running"
+msgstr "실행 중이 아님"
+
+#: package/contents/ui/ConfigTray.qml:118
+msgid "Currently passive (hidden by the application)"
+msgstr "현재 수동 상태(애플리케이션이 숨김)"
+
+#: package/contents/ui/ConfigTray.qml:123
+msgid "Show"
+msgstr "표시"
+
+#: package/contents/ui/ConfigTray.qml:129
+msgid "Pin to start"
+msgstr "맨 앞에 고정"
+
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+msgid "Power Mode"
+msgstr "전원 모드"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Unmute"
+msgstr "음소거 해제"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Mute"
+msgstr "음소거"
+
+#: package/contents/ui/FullRepresentation.qml:223
+msgid "Volume of %1"
+msgstr "%1 음량"
+
+#: package/contents/ui/FullRepresentation.qml:232
+msgid "Select audio device"
+msgstr "오디오 장치 선택"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Unmute microphone"
+msgstr "마이크 음소거 해제"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Mute microphone"
+msgstr "마이크 음소거"
+
+#: package/contents/ui/FullRepresentation.qml:250
+msgid "Microphone volume of %1"
+msgstr "%1 마이크 음량"
+
+#: package/contents/ui/FullRepresentation.qml:259
+msgid "Select microphone"
+msgstr "마이크 선택"
+
+#: package/contents/ui/FullRepresentation.qml:278
+msgid "Brightness of %1"
+msgstr "%1 밝기"
+
+#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:306
+msgid "Show Wi-Fi networks"
+msgstr "Wi-Fi 네트워크 표시"
+
+#: package/contents/ui/FullRepresentation.qml:320
+msgid "Show Bluetooth devices"
+msgstr "블루투스 장치 표시"
+
+#: package/contents/ui/FullRepresentation.qml:337
+msgid "Choose power mode"
+msgstr "전원 모드 선택"
+
+#: package/contents/ui/FullRepresentation.qml:348
+msgid "Airplane Mode"
+msgstr "비행기 모드"
+
+#: package/contents/ui/FullRepresentation.qml:358
+msgid "Do Not Disturb"
+msgstr "방해 금지"
+
+#: package/contents/ui/FullRepresentation.qml:370
+msgid "Night Light"
+msgstr "야간 조명"
+
+#: package/contents/ui/FullRepresentation.qml:381
+msgid "Dark Style"
+msgstr "어두운 스타일"
+
+#: package/contents/ui/FullRepresentation.qml:390
+msgid "Battery"
+msgstr "배터리"
+
+#: package/contents/ui/FullRepresentation.qml:392
+msgid "%1% · charging"
+msgstr "%1% · 충전 중"
+
+#: package/contents/ui/FullRepresentation.qml:393
+msgctxt "Battery percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/FullRepresentation.qml:406
+msgid "Clipboard"
+msgstr "클립보드"
+
+#: package/contents/ui/FullRepresentation.qml:407
+msgid "Empty"
+msgstr "비어 있음"
+
+#: package/contents/ui/FullRepresentation.qml:410
+msgid "Show clipboard history"
+msgstr "클립보드 기록 표시"
+
+#: package/contents/ui/FullRepresentation.qml:420
+msgid "Screenshot"
+msgstr "스크린샷"
+
+#: package/contents/ui/WifiPage.qml:24
+msgid "All Networks Settings…"
+msgstr "모든 네트워크 설정…"
+
+#: package/contents/ui/WifiPage.qml:25
+msgid "No networks found"
+msgstr "네트워크를 찾을 수 없음"
+
+#: package/contents/ui/WifiPage.qml:104
+msgid "Saved"
+msgstr "저장됨"
+
+#: package/contents/ui/WifiPage.qml:134
+msgid "Password"
+msgstr "암호"
+
+#: package/contents/ui/WifiPage.qml:135
+msgid "Password for %1"
+msgstr "%1 암호"
+
+#: package/contents/ui/WifiPage.qml:147
+msgid "Connect"
+msgstr "연결"
+
+#: package/contents/ui/backends/AudioBackend.qml:61
+msgid "Unknown device"
+msgstr "알 수 없는 장치"
+
+#: package/contents/ui/backends/BluetoothBackend.qml:31
+msgid "%1 device"
+msgid_plural "%1 devices"
+msgstr[0] "장치 %1개"
+
+#: package/contents/ui/backends/DndBackend.qml:48
+msgid "Until %1"
+msgstr "%1까지"
+
+#: package/contents/ui/backends/NightLightBackend.qml:32
+msgid "Suspended"
+msgstr "일시 중지됨"
+
+#: package/contents/ui/backends/NightLightBackend.qml:35
+msgid "Transitioning"
+msgstr "전환 중"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Day"
+msgstr "낮"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Night"
+msgstr "밤"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:40 package/contents/ui/components/NotificationList.qml:70
+msgid "Notification service not available"
+msgstr "알림 서비스를 사용할 수 없음"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:42
+msgid "%1 unread notification"
+msgid_plural "%1 unread notifications"
+msgstr[0] "읽지 않은 알림 %1개"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:37
+msgid "Power Saver"
+msgstr "절전"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:39
+msgid "Balanced"
+msgstr "균형"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:41
+msgid "Performance"
+msgstr "성능"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Input"
+msgstr "소리 입력"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Output"
+msgstr "소리 출력"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:111
+msgid "Raise maximum volume"
+msgstr "최대 음량 높이기"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:120
+msgid "Prolonged use of this feature will damage the device's speakers. Only use it temporarily to make quiet media audible."
+msgstr "이 기능을 오래 사용하면 장치의 스피커가 손상됩니다. 소리가 작은 미디어를 들을 수 있도록 일시적으로만 사용하십시오."
+
+#: package/contents/ui/components/ClipboardMenu.qml:41
+msgid "Clipboard History"
+msgstr "클립보드 기록"
+
+#: package/contents/ui/components/ClipboardMenu.qml:47 package/contents/ui/components/NotificationList.qml:37
+msgid "Clear"
+msgstr "지우기"
+
+#: package/contents/ui/components/ClipboardMenu.qml:49
+msgid "Clear clipboard history"
+msgstr "클립보드 기록 지우기"
+
+#: package/contents/ui/components/ClipboardMenu.qml:62
+msgid "Clipboard is empty"
+msgstr "클립보드가 비어 있음"
+
+#: package/contents/ui/components/ClipboardMenu.qml:79
+msgid "Image"
+msgstr "이미지"
+
+#: package/contents/ui/components/NotificationCard.qml:80
+msgid "Unread"
+msgstr "읽지 않음"
+
+#: package/contents/ui/components/NotificationCard.qml:94
+msgid "Close"
+msgstr "닫기"
+
+#: package/contents/ui/components/NotificationCard.qml:98
+msgid "Close notification"
+msgstr "알림 닫기"
+
+#: package/contents/ui/components/NotificationList.qml:31
+msgid "Notifications"
+msgstr "알림"
+
+#: package/contents/ui/components/NotificationList.qml:70
+msgid "No notifications"
+msgstr "알림 없음"
+
+#: package/contents/ui/components/PanelTrayItem.qml:36
+msgid "Needs attention"
+msgstr "주의 필요"
+
+#: package/contents/ui/components/QuickToggle.qml:138 package/contents/ui/components/QuickToggle.qml:186
+msgid "Unavailable"
+msgstr "사용할 수 없음"
+
+#: package/contents/ui/components/SliderRow.qml:72
+msgctxt "Slider value as a percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/components/SubPage.qml:46
+msgid "Back"
+msgstr "뒤로"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Unpin from Start"
+msgstr "맨 앞 고정 해제"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Pin to Start"
+msgstr "맨 앞에 고정"
+
+#: package/contents/ui/components/TrayMenu.qml:138
+msgid "Hide from PlasmaDeck"
+msgstr "PlasmaDeck에서 숨기기"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: muted"
+msgstr "음량: 음소거"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: %1%"
+msgstr "음량: %1%"
+
+#: package/contents/ui/main.qml:122
+msgid "Battery: %1%"
+msgstr "배터리: %1%"
+

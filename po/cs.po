@@ -1,0 +1,341 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dev.quicksettings.plasmoid\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: package/contents/config/config.qml:11
+msgid "System Tray"
+msgstr "Systémová část panelu"
+
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/BluetoothPage.qml:23
+msgid "Bluetooth Settings…"
+msgstr "Nastavení Bluetooth…"
+
+#: package/contents/ui/BluetoothPage.qml:24
+msgid "No paired devices"
+msgstr "Žádná spárovaná zařízení"
+
+#: package/contents/ui/BluetoothPage.qml:87
+msgid "Disconnecting…"
+msgstr "Odpojování…"
+
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+msgid "Connecting…"
+msgstr "Připojování…"
+
+#: package/contents/ui/BluetoothPage.qml:91
+msgid "Connected · %1% battery"
+msgstr "Připojeno · baterie %1 %"
+
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+msgid "Connected"
+msgstr "Připojeno"
+
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+msgid "Not connected"
+msgstr "Nepřipojeno"
+
+#: package/contents/ui/ConfigTray.qml:82
+msgid "No applications are using the system tray"
+msgstr "Systémovou část panelu nepoužívá žádná aplikace"
+
+#: package/contents/ui/ConfigTray.qml:117
+msgid "Not running"
+msgstr "Neběží"
+
+#: package/contents/ui/ConfigTray.qml:118
+msgid "Currently passive (hidden by the application)"
+msgstr "Nyní pasivní (skryto aplikací)"
+
+#: package/contents/ui/ConfigTray.qml:123
+msgid "Show"
+msgstr "Zobrazit"
+
+#: package/contents/ui/ConfigTray.qml:129
+msgid "Pin to start"
+msgstr "Připnout na začátek"
+
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+msgid "Power Mode"
+msgstr "Režim napájení"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Unmute"
+msgstr "Zapnout zvuk"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Mute"
+msgstr "Ztlumit"
+
+#: package/contents/ui/FullRepresentation.qml:223
+msgid "Volume of %1"
+msgstr "Hlasitost %1"
+
+#: package/contents/ui/FullRepresentation.qml:232
+msgid "Select audio device"
+msgstr "Vybrat zvukové zařízení"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Unmute microphone"
+msgstr "Zapnout mikrofon"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Mute microphone"
+msgstr "Ztlumit mikrofon"
+
+#: package/contents/ui/FullRepresentation.qml:250
+msgid "Microphone volume of %1"
+msgstr "Hlasitost mikrofonu %1"
+
+#: package/contents/ui/FullRepresentation.qml:259
+msgid "Select microphone"
+msgstr "Vybrat mikrofon"
+
+#: package/contents/ui/FullRepresentation.qml:278
+msgid "Brightness of %1"
+msgstr "Jas %1"
+
+#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:306
+msgid "Show Wi-Fi networks"
+msgstr "Zobrazit sítě Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:320
+msgid "Show Bluetooth devices"
+msgstr "Zobrazit zařízení Bluetooth"
+
+#: package/contents/ui/FullRepresentation.qml:337
+msgid "Choose power mode"
+msgstr "Vybrat režim napájení"
+
+#: package/contents/ui/FullRepresentation.qml:348
+msgid "Airplane Mode"
+msgstr "Režim letadlo"
+
+#: package/contents/ui/FullRepresentation.qml:358
+msgid "Do Not Disturb"
+msgstr "Nerušit"
+
+#: package/contents/ui/FullRepresentation.qml:370
+msgid "Night Light"
+msgstr "Noční světlo"
+
+#: package/contents/ui/FullRepresentation.qml:381
+msgid "Dark Style"
+msgstr "Tmavý styl"
+
+#: package/contents/ui/FullRepresentation.qml:390
+msgid "Battery"
+msgstr "Baterie"
+
+#: package/contents/ui/FullRepresentation.qml:392
+msgid "%1% · charging"
+msgstr "%1 % · nabíjí se"
+
+#: package/contents/ui/FullRepresentation.qml:393
+msgctxt "Battery percentage"
+msgid "%1%"
+msgstr "%1 %"
+
+#: package/contents/ui/FullRepresentation.qml:406
+msgid "Clipboard"
+msgstr "Schránka"
+
+#: package/contents/ui/FullRepresentation.qml:407
+msgid "Empty"
+msgstr "Prázdná"
+
+#: package/contents/ui/FullRepresentation.qml:410
+msgid "Show clipboard history"
+msgstr "Zobrazit historii schránky"
+
+#: package/contents/ui/FullRepresentation.qml:420
+msgid "Screenshot"
+msgstr "Snímek obrazovky"
+
+#: package/contents/ui/WifiPage.qml:24
+msgid "All Networks Settings…"
+msgstr "Nastavení všech sítí…"
+
+#: package/contents/ui/WifiPage.qml:25
+msgid "No networks found"
+msgstr "Nenalezeny žádné sítě"
+
+#: package/contents/ui/WifiPage.qml:104
+msgid "Saved"
+msgstr "Uloženo"
+
+#: package/contents/ui/WifiPage.qml:134
+msgid "Password"
+msgstr "Heslo"
+
+#: package/contents/ui/WifiPage.qml:135
+msgid "Password for %1"
+msgstr "Heslo pro %1"
+
+#: package/contents/ui/WifiPage.qml:147
+msgid "Connect"
+msgstr "Připojit"
+
+#: package/contents/ui/backends/AudioBackend.qml:61
+msgid "Unknown device"
+msgstr "Neznámé zařízení"
+
+#: package/contents/ui/backends/BluetoothBackend.qml:31
+msgid "%1 device"
+msgid_plural "%1 devices"
+msgstr[0] "%1 zařízení"
+msgstr[1] "%1 zařízení"
+msgstr[2] "%1 zařízení"
+
+#: package/contents/ui/backends/DndBackend.qml:48
+msgid "Until %1"
+msgstr "Do %1"
+
+#: package/contents/ui/backends/NightLightBackend.qml:32
+msgid "Suspended"
+msgstr "Pozastaveno"
+
+#: package/contents/ui/backends/NightLightBackend.qml:35
+msgid "Transitioning"
+msgstr "Přechod"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Day"
+msgstr "Den"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Night"
+msgstr "Noc"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:40 package/contents/ui/components/NotificationList.qml:70
+msgid "Notification service not available"
+msgstr "Služba upozornění není dostupná"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:42
+msgid "%1 unread notification"
+msgid_plural "%1 unread notifications"
+msgstr[0] "%1 nepřečtené upozornění"
+msgstr[1] "%1 nepřečtená upozornění"
+msgstr[2] "%1 nepřečtených upozornění"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:37
+msgid "Power Saver"
+msgstr "Úspora energie"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:39
+msgid "Balanced"
+msgstr "Vyvážený"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:41
+msgid "Performance"
+msgstr "Výkon"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Input"
+msgstr "Zvukový vstup"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Output"
+msgstr "Zvukový výstup"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:111
+msgid "Raise maximum volume"
+msgstr "Zvýšit maximální hlasitost"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:120
+msgid "Prolonged use of this feature will damage the device's speakers. Only use it temporarily to make quiet media audible."
+msgstr "Dlouhodobé používání této funkce poškodí reproduktory zařízení. Používejte ji jen dočasně, aby byla tichá média slyšet."
+
+#: package/contents/ui/components/ClipboardMenu.qml:41
+msgid "Clipboard History"
+msgstr "Historie schránky"
+
+#: package/contents/ui/components/ClipboardMenu.qml:47 package/contents/ui/components/NotificationList.qml:37
+msgid "Clear"
+msgstr "Vymazat"
+
+#: package/contents/ui/components/ClipboardMenu.qml:49
+msgid "Clear clipboard history"
+msgstr "Vymazat historii schránky"
+
+#: package/contents/ui/components/ClipboardMenu.qml:62
+msgid "Clipboard is empty"
+msgstr "Schránka je prázdná"
+
+#: package/contents/ui/components/ClipboardMenu.qml:79
+msgid "Image"
+msgstr "Obrázek"
+
+#: package/contents/ui/components/NotificationCard.qml:80
+msgid "Unread"
+msgstr "Nepřečteno"
+
+#: package/contents/ui/components/NotificationCard.qml:94
+msgid "Close"
+msgstr "Zavřít"
+
+#: package/contents/ui/components/NotificationCard.qml:98
+msgid "Close notification"
+msgstr "Zavřít upozornění"
+
+#: package/contents/ui/components/NotificationList.qml:31
+msgid "Notifications"
+msgstr "Upozornění"
+
+#: package/contents/ui/components/NotificationList.qml:70
+msgid "No notifications"
+msgstr "Žádná upozornění"
+
+#: package/contents/ui/components/PanelTrayItem.qml:36
+msgid "Needs attention"
+msgstr "Vyžaduje pozornost"
+
+#: package/contents/ui/components/QuickToggle.qml:138 package/contents/ui/components/QuickToggle.qml:186
+msgid "Unavailable"
+msgstr "Nedostupné"
+
+#: package/contents/ui/components/SliderRow.qml:72
+msgctxt "Slider value as a percentage"
+msgid "%1%"
+msgstr "%1 %"
+
+#: package/contents/ui/components/SubPage.qml:46
+msgid "Back"
+msgstr "Zpět"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Unpin from Start"
+msgstr "Odepnout ze začátku"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Pin to Start"
+msgstr "Připnout na začátek"
+
+#: package/contents/ui/components/TrayMenu.qml:138
+msgid "Hide from PlasmaDeck"
+msgstr "Skrýt z PlasmaDeck"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: muted"
+msgstr "Hlasitost: ztlumeno"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: %1%"
+msgstr "Hlasitost: %1 %"
+
+#: package/contents/ui/main.qml:122
+msgid "Battery: %1%"
+msgstr "Baterie: %1 %"
+

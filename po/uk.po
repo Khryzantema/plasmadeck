@@ -1,0 +1,341 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dev.quicksettings.plasmoid\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: package/contents/config/config.qml:11
+msgid "System Tray"
+msgstr "Системний лоток"
+
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: package/contents/ui/BluetoothPage.qml:23
+msgid "Bluetooth Settings…"
+msgstr "Параметри Bluetooth…"
+
+#: package/contents/ui/BluetoothPage.qml:24
+msgid "No paired devices"
+msgstr "Немає спарених пристроїв"
+
+#: package/contents/ui/BluetoothPage.qml:87
+msgid "Disconnecting…"
+msgstr "Від’єднання…"
+
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+msgid "Connecting…"
+msgstr "З’єднання…"
+
+#: package/contents/ui/BluetoothPage.qml:91
+msgid "Connected · %1% battery"
+msgstr "З’єднано · заряд %1%"
+
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+msgid "Connected"
+msgstr "З’єднано"
+
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+msgid "Not connected"
+msgstr "Не з’єднано"
+
+#: package/contents/ui/ConfigTray.qml:82
+msgid "No applications are using the system tray"
+msgstr "Жодна програма не використовує системний лоток"
+
+#: package/contents/ui/ConfigTray.qml:117
+msgid "Not running"
+msgstr "Не запущено"
+
+#: package/contents/ui/ConfigTray.qml:118
+msgid "Currently passive (hidden by the application)"
+msgstr "Зараз пасивний (приховано програмою)"
+
+#: package/contents/ui/ConfigTray.qml:123
+msgid "Show"
+msgstr "Показувати"
+
+#: package/contents/ui/ConfigTray.qml:129
+msgid "Pin to start"
+msgstr "Пришпилити на початку"
+
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+msgid "Power Mode"
+msgstr "Режим живлення"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Unmute"
+msgstr "Увімкнути звук"
+
+#: package/contents/ui/FullRepresentation.qml:222
+msgid "Mute"
+msgstr "Вимкнути звук"
+
+#: package/contents/ui/FullRepresentation.qml:223
+msgid "Volume of %1"
+msgstr "Гучність: %1"
+
+#: package/contents/ui/FullRepresentation.qml:232
+msgid "Select audio device"
+msgstr "Вибрати звуковий пристрій"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Unmute microphone"
+msgstr "Увімкнути мікрофон"
+
+#: package/contents/ui/FullRepresentation.qml:249
+msgid "Mute microphone"
+msgstr "Вимкнути мікрофон"
+
+#: package/contents/ui/FullRepresentation.qml:250
+msgid "Microphone volume of %1"
+msgstr "Гучність мікрофона: %1"
+
+#: package/contents/ui/FullRepresentation.qml:259
+msgid "Select microphone"
+msgstr "Вибрати мікрофон"
+
+#: package/contents/ui/FullRepresentation.qml:278
+msgid "Brightness of %1"
+msgstr "Яскравість: %1"
+
+#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:306
+msgid "Show Wi-Fi networks"
+msgstr "Показати мережі Wi-Fi"
+
+#: package/contents/ui/FullRepresentation.qml:320
+msgid "Show Bluetooth devices"
+msgstr "Показати пристрої Bluetooth"
+
+#: package/contents/ui/FullRepresentation.qml:337
+msgid "Choose power mode"
+msgstr "Вибрати режим живлення"
+
+#: package/contents/ui/FullRepresentation.qml:348
+msgid "Airplane Mode"
+msgstr "Режим польоту"
+
+#: package/contents/ui/FullRepresentation.qml:358
+msgid "Do Not Disturb"
+msgstr "Не турбувати"
+
+#: package/contents/ui/FullRepresentation.qml:370
+msgid "Night Light"
+msgstr "Нічне світло"
+
+#: package/contents/ui/FullRepresentation.qml:381
+msgid "Dark Style"
+msgstr "Темний стиль"
+
+#: package/contents/ui/FullRepresentation.qml:390
+msgid "Battery"
+msgstr "Акумулятор"
+
+#: package/contents/ui/FullRepresentation.qml:392
+msgid "%1% · charging"
+msgstr "%1% · заряджається"
+
+#: package/contents/ui/FullRepresentation.qml:393
+msgctxt "Battery percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/FullRepresentation.qml:406
+msgid "Clipboard"
+msgstr "Буфер обміну"
+
+#: package/contents/ui/FullRepresentation.qml:407
+msgid "Empty"
+msgstr "Порожньо"
+
+#: package/contents/ui/FullRepresentation.qml:410
+msgid "Show clipboard history"
+msgstr "Показати історію буфера обміну"
+
+#: package/contents/ui/FullRepresentation.qml:420
+msgid "Screenshot"
+msgstr "Знімок екрана"
+
+#: package/contents/ui/WifiPage.qml:24
+msgid "All Networks Settings…"
+msgstr "Параметри всіх мереж…"
+
+#: package/contents/ui/WifiPage.qml:25
+msgid "No networks found"
+msgstr "Мереж не знайдено"
+
+#: package/contents/ui/WifiPage.qml:104
+msgid "Saved"
+msgstr "Збережено"
+
+#: package/contents/ui/WifiPage.qml:134
+msgid "Password"
+msgstr "Пароль"
+
+#: package/contents/ui/WifiPage.qml:135
+msgid "Password for %1"
+msgstr "Пароль до %1"
+
+#: package/contents/ui/WifiPage.qml:147
+msgid "Connect"
+msgstr "З’єднатися"
+
+#: package/contents/ui/backends/AudioBackend.qml:61
+msgid "Unknown device"
+msgstr "Невідомий пристрій"
+
+#: package/contents/ui/backends/BluetoothBackend.qml:31
+msgid "%1 device"
+msgid_plural "%1 devices"
+msgstr[0] "%1 пристрій"
+msgstr[1] "%1 пристрої"
+msgstr[2] "%1 пристроїв"
+
+#: package/contents/ui/backends/DndBackend.qml:48
+msgid "Until %1"
+msgstr "До %1"
+
+#: package/contents/ui/backends/NightLightBackend.qml:32
+msgid "Suspended"
+msgstr "Призупинено"
+
+#: package/contents/ui/backends/NightLightBackend.qml:35
+msgid "Transitioning"
+msgstr "Перехід"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Day"
+msgstr "День"
+
+#: package/contents/ui/backends/NightLightBackend.qml:37
+msgid "Night"
+msgstr "Ніч"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:40 package/contents/ui/components/NotificationList.qml:70
+msgid "Notification service not available"
+msgstr "Служба сповіщень недоступна"
+
+#: package/contents/ui/backends/NotificationsBackend.qml:42
+msgid "%1 unread notification"
+msgid_plural "%1 unread notifications"
+msgstr[0] "%1 непрочитане сповіщення"
+msgstr[1] "%1 непрочитані сповіщення"
+msgstr[2] "%1 непрочитаних сповіщень"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:37
+msgid "Power Saver"
+msgstr "Енергозбереження"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:39
+msgid "Balanced"
+msgstr "Збалансований"
+
+#: package/contents/ui/backends/PowerProfilesBackend.qml:41
+msgid "Performance"
+msgstr "Продуктивність"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Input"
+msgstr "Звуковий вхід"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:95
+msgid "Sound Output"
+msgstr "Звуковий вихід"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:111
+msgid "Raise maximum volume"
+msgstr "Збільшити максимальну гучність"
+
+#: package/contents/ui/components/AudioDeviceMenu.qml:120
+msgid "Prolonged use of this feature will damage the device's speakers. Only use it temporarily to make quiet media audible."
+msgstr "Тривале використання цієї функції пошкодить динаміки пристрою. Використовуйте її лише тимчасово, щоб зробити чутними тихі записи."
+
+#: package/contents/ui/components/ClipboardMenu.qml:41
+msgid "Clipboard History"
+msgstr "Історія буфера обміну"
+
+#: package/contents/ui/components/ClipboardMenu.qml:47 package/contents/ui/components/NotificationList.qml:37
+msgid "Clear"
+msgstr "Очистити"
+
+#: package/contents/ui/components/ClipboardMenu.qml:49
+msgid "Clear clipboard history"
+msgstr "Очистити історію буфера обміну"
+
+#: package/contents/ui/components/ClipboardMenu.qml:62
+msgid "Clipboard is empty"
+msgstr "Буфер обміну порожній"
+
+#: package/contents/ui/components/ClipboardMenu.qml:79
+msgid "Image"
+msgstr "Зображення"
+
+#: package/contents/ui/components/NotificationCard.qml:80
+msgid "Unread"
+msgstr "Не прочитано"
+
+#: package/contents/ui/components/NotificationCard.qml:94
+msgid "Close"
+msgstr "Закрити"
+
+#: package/contents/ui/components/NotificationCard.qml:98
+msgid "Close notification"
+msgstr "Закрити сповіщення"
+
+#: package/contents/ui/components/NotificationList.qml:31
+msgid "Notifications"
+msgstr "Сповіщення"
+
+#: package/contents/ui/components/NotificationList.qml:70
+msgid "No notifications"
+msgstr "Немає сповіщень"
+
+#: package/contents/ui/components/PanelTrayItem.qml:36
+msgid "Needs attention"
+msgstr "Потребує уваги"
+
+#: package/contents/ui/components/QuickToggle.qml:138 package/contents/ui/components/QuickToggle.qml:186
+msgid "Unavailable"
+msgstr "Недоступно"
+
+#: package/contents/ui/components/SliderRow.qml:72
+msgctxt "Slider value as a percentage"
+msgid "%1%"
+msgstr "%1%"
+
+#: package/contents/ui/components/SubPage.qml:46
+msgid "Back"
+msgstr "Назад"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Unpin from Start"
+msgstr "Відшпилити з початку"
+
+#: package/contents/ui/components/TrayMenu.qml:132
+msgid "Pin to Start"
+msgstr "Пришпилити на початку"
+
+#: package/contents/ui/components/TrayMenu.qml:138
+msgid "Hide from PlasmaDeck"
+msgstr "Приховати з PlasmaDeck"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: muted"
+msgstr "Гучність: вимкнено"
+
+#: package/contents/ui/main.qml:119
+msgid "Volume: %1%"
+msgstr "Гучність: %1%"
+
+#: package/contents/ui/main.qml:122
+msgid "Battery: %1%"
+msgstr "Акумулятор: %1%"
+
