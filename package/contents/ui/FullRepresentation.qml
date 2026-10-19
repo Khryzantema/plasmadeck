@@ -59,8 +59,10 @@ PlasmaExtras.Representation {
         }
     }
 
+    // Focus for the keyboard, without lighting the first button up (no "visual
+    // focus") when the popup is opened with the mouse; Tab shows it as usual.
     function focusFirst() {
-        mainPage.nextItemInFocusChain(true).forceActiveFocus(Qt.TabFocusReason);
+        mainPage.nextItemInFocusChain(true).forceActiveFocus(Qt.OtherFocusReason);
     }
 
     // The popup keeps the main page's height on every page and while menus are open:

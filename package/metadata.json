@@ -29,7 +29,7 @@
         "Id": "io.github.khryzantema.plasmadeck",
         "License": "GPL-2.0-or-later",
         "Name": "PlasmaDeck",
-        "Version": "1.0.1",
+        "Version": "1.0.1.1",
         "Website": "https://github.com/Khryzantema/plasmadeck"
     },
     "KPackageStructure": "Plasma/Applet",
