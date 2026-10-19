@@ -8,6 +8,12 @@ status icons opens a single popup with the quick controls.
 Written in plain QML (no compiled plugin), using the same Plasma modules and
 DBus services the built-in widgets use.
 
+## Screenshots
+
+| Quick settings | Network | Clipboard history |
+|:---:|:---:|:---:|
+| ![The PlasmaDeck popup](docs/screenshots/menu.png) | ![The network page](docs/screenshots/network.png) | ![The clipboard history menu](docs/screenshots/clipboard.png) |
+
 ## Features
 
 **Panel**
