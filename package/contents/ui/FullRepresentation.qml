@@ -398,22 +398,6 @@ PlasmaExtras.Representation {
                 }
 
                 QuickToggle {
-                    id: clipboardToggle
-                    Layout.fillWidth: true
-                    visible: full.clipboard !== null
-                    checkable: false
-                    iconName: "klipper-symbolic"
-                    title: i18n("Clipboard")
-                    subtitle: full.clipboard?.currentText ? full.clipboard.preview(full.clipboard.currentText) : i18n("Empty")
-                    hasMenu: true
-                    menuOpen: full.openMenu === "clipboard"
-                    menuLabel: i18n("Show clipboard history")
-                    // Nothing to switch on or off: the pill opens the history too.
-                    onToggled: full.toggleMenu("clipboard")
-                    onMenuRequested: full.toggleMenu("clipboard")
-                }
-
-                QuickToggle {
                     Layout.fillWidth: true
                     checkable: false
                     iconName: "camera-photo-symbolic"
@@ -430,6 +414,24 @@ PlasmaExtras.Representation {
                 Layout.fillWidth: true
                 visible: full.notifications !== null
                 backend: full.notifications
+            }
+
+            // Clipboard at the bottom, as wide as the popup so the copied text fits.
+            QuickToggle {
+                id: clipboardToggle
+                Layout.fillWidth: true
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                visible: full.clipboard !== null
+                checkable: false
+                iconName: "klipper-symbolic"
+                title: i18n("Clipboard")
+                subtitle: full.clipboard?.currentText ? full.clipboard.preview(full.clipboard.currentText) : i18n("Empty")
+                hasMenu: true
+                menuOpen: full.openMenu === "clipboard"
+                menuLabel: i18n("Show clipboard history")
+                // Nothing to switch on or off: the pill opens the history too.
+                onToggled: full.toggleMenu("clipboard")
+                onMenuRequested: full.toggleMenu("clipboard")
             }
         }
     }

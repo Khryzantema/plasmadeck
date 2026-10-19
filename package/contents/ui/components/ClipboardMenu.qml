@@ -47,7 +47,10 @@ Rectangle {
                 text: i18n("Clear")
                 display: PlasmaComponents3.AbstractButton.IconOnly
                 Accessible.name: i18n("Clear clipboard history")
-                onClicked: menu.clipboard.clear()
+                onClicked: {
+                    menu.chosen();
+                    menu.clipboard.clear();
+                }
                 PlasmaComponents3.ToolTip.text: Accessible.name
                 PlasmaComponents3.ToolTip.visible: hovered
                 PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay

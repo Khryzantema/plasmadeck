@@ -31,8 +31,12 @@ Item {
         history.moveToTop(uuid);
     }
 
+    // Klipper asks for confirmation in a modal dialog, which runs a nested event
+    // loop. Calling it straight from a button in the popup lets the popup (and
+    // that button) be destroyed while its click handler is still running, which
+    // makes Qt abort plasmashell. So the call runs later, from this backend.
     function clear() {
-        history.clearHistory();
+        Qt.callLater(() => history.clearHistory());
     }
 
     // One line preview of a text entry: whitespace collapsed, trimmed.
