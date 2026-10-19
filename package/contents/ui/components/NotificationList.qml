@@ -14,12 +14,15 @@ ColumnLayout {
     id: section
 
     required property Item backend
+    // Off when something else above already draws the separator.
+    property bool showSeparator: true
 
     spacing: Kirigami.Units.smallSpacing
 
     Kirigami.Separator {
         Layout.fillWidth: true
         Layout.topMargin: Kirigami.Units.smallSpacing
+        visible: section.showSeparator
     }
 
     RowLayout {

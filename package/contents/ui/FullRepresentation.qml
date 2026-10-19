@@ -431,11 +431,17 @@ PlasmaExtras.Representation {
                 }
             }
 
+            // Separates the toggles from the clipboard and notifications below.
+            Kirigami.Separator {
+                Layout.fillWidth: true
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
+            }
+
             // Clipboard, as wide as the popup so the copied text fits.
             QuickToggle {
                 id: clipboardToggle
                 Layout.fillWidth: true
-                Layout.topMargin: Kirigami.Units.smallSpacing
                 visible: full.clipboard !== null
                 checkable: false
                 iconName: "klipper-symbolic"
@@ -451,6 +457,7 @@ PlasmaExtras.Representation {
 
             NotificationList {
                 Layout.fillWidth: true
+                showSeparator: false
                 visible: full.notifications !== null
                 backend: full.notifications
             }
