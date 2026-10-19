@@ -11,7 +11,7 @@ msgstr ""
 msgid "System Tray"
 msgstr "系统托盘"
 
-#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:338
 msgid "Bluetooth"
 msgstr "蓝牙"
 
@@ -27,7 +27,7 @@ msgstr "没有已配对的设备"
 msgid "Disconnecting…"
 msgstr "正在断开连接…"
 
-#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/NetworkPage.qml:115
 msgid "Connecting…"
 msgstr "正在连接…"
 
@@ -35,11 +35,11 @@ msgstr "正在连接…"
 msgid "Connected · %1% battery"
 msgstr "已连接 · 电量 %1%"
 
-#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/NetworkPage.qml:118
 msgid "Connected"
 msgstr "已连接"
 
-#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:324
 msgid "Not connected"
 msgstr "未连接"
 
@@ -63,7 +63,7 @@ msgstr "显示"
 msgid "Pin to start"
 msgstr "固定到开头"
 
-#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:354
 msgid "Power Mode"
 msgstr "电源模式"
 
@@ -103,88 +103,104 @@ msgstr "选择麦克风"
 msgid "Brightness of %1"
 msgstr "%1 的亮度"
 
-#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:24 package/contents/ui/NetworkPage.qml:40
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: package/contents/ui/FullRepresentation.qml:306
-msgid "Show Wi-Fi networks"
-msgstr "显示 Wi-Fi 网络"
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:40
+msgid "Ethernet"
+msgstr "以太网"
 
-#: package/contents/ui/FullRepresentation.qml:320
+#: package/contents/ui/FullRepresentation.qml:316
+msgid "Disconnected"
+msgstr "已断开"
+
+#: package/contents/ui/FullRepresentation.qml:324
+msgid "Ethernet: %1"
+msgstr "以太网：%1"
+
+#: package/contents/ui/FullRepresentation.qml:327
+msgid "Show networks"
+msgstr "显示网络"
+
+#: package/contents/ui/FullRepresentation.qml:341
 msgid "Show Bluetooth devices"
 msgstr "显示蓝牙设备"
 
-#: package/contents/ui/FullRepresentation.qml:337
+#: package/contents/ui/FullRepresentation.qml:358
 msgid "Choose power mode"
 msgstr "选择电源模式"
 
-#: package/contents/ui/FullRepresentation.qml:348
+#: package/contents/ui/FullRepresentation.qml:369
 msgid "Airplane Mode"
 msgstr "飞行模式"
 
-#: package/contents/ui/FullRepresentation.qml:358
+#: package/contents/ui/FullRepresentation.qml:379
 msgid "Do Not Disturb"
 msgstr "勿扰模式"
 
-#: package/contents/ui/FullRepresentation.qml:370
+#: package/contents/ui/FullRepresentation.qml:391
 msgid "Night Light"
 msgstr "夜间模式"
 
-#: package/contents/ui/FullRepresentation.qml:381
+#: package/contents/ui/FullRepresentation.qml:402
 msgid "Dark Style"
 msgstr "深色风格"
 
-#: package/contents/ui/FullRepresentation.qml:390
+#: package/contents/ui/FullRepresentation.qml:411
 msgid "Battery"
 msgstr "电池"
 
-#: package/contents/ui/FullRepresentation.qml:392
+#: package/contents/ui/FullRepresentation.qml:413
 msgid "%1% · charging"
 msgstr "%1% · 正在充电"
 
-#: package/contents/ui/FullRepresentation.qml:393
+#: package/contents/ui/FullRepresentation.qml:414
 msgctxt "Battery percentage"
 msgid "%1%"
 msgstr "%1%"
 
-#: package/contents/ui/FullRepresentation.qml:406
-msgid "Clipboard"
-msgstr "剪贴板"
-
-#: package/contents/ui/FullRepresentation.qml:407
-msgid "Empty"
-msgstr "空"
-
-#: package/contents/ui/FullRepresentation.qml:410
-msgid "Show clipboard history"
-msgstr "显示剪贴板历史"
-
-#: package/contents/ui/FullRepresentation.qml:420
+#: package/contents/ui/FullRepresentation.qml:425
 msgid "Screenshot"
 msgstr "截图"
 
-#: package/contents/ui/WifiPage.qml:24
+#: package/contents/ui/FullRepresentation.qml:442
+msgid "Clipboard"
+msgstr "剪贴板"
+
+#: package/contents/ui/FullRepresentation.qml:443
+msgid "Empty"
+msgstr "空"
+
+#: package/contents/ui/FullRepresentation.qml:446
+msgid "Show clipboard history"
+msgstr "显示剪贴板历史"
+
+#: package/contents/ui/NetworkPage.qml:21
+msgid "Network"
+msgstr "网络"
+
+#: package/contents/ui/NetworkPage.qml:29
 msgid "All Networks Settings…"
 msgstr "所有网络设置…"
 
-#: package/contents/ui/WifiPage.qml:25
+#: package/contents/ui/NetworkPage.qml:30
 msgid "No networks found"
 msgstr "未找到网络"
 
-#: package/contents/ui/WifiPage.qml:104
+#: package/contents/ui/NetworkPage.qml:120
 msgid "Saved"
 msgstr "已保存"
 
-#: package/contents/ui/WifiPage.qml:134
+#: package/contents/ui/NetworkPage.qml:150
 msgid "Password"
 msgstr "密码"
 
-#: package/contents/ui/WifiPage.qml:135
+#: package/contents/ui/NetworkPage.qml:151
 msgid "Password for %1"
 msgstr "%1 的密码"
 
-#: package/contents/ui/WifiPage.qml:147
+#: package/contents/ui/NetworkPage.qml:163
 msgid "Connect"
 msgstr "连接"
 
@@ -266,11 +282,11 @@ msgstr "清除"
 msgid "Clear clipboard history"
 msgstr "清除剪贴板历史"
 
-#: package/contents/ui/components/ClipboardMenu.qml:62
+#: package/contents/ui/components/ClipboardMenu.qml:65
 msgid "Clipboard is empty"
 msgstr "剪贴板为空"
 
-#: package/contents/ui/components/ClipboardMenu.qml:79
+#: package/contents/ui/components/ClipboardMenu.qml:82
 msgid "Image"
 msgstr "图像"
 
@@ -307,7 +323,7 @@ msgctxt "Slider value as a percentage"
 msgid "%1%"
 msgstr "%1%"
 
-#: package/contents/ui/components/SubPage.qml:46
+#: package/contents/ui/components/SubPage.qml:54
 msgid "Back"
 msgstr "返回"
 

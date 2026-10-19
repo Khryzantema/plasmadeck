@@ -28,10 +28,13 @@ DBus services the built-in widgets use.
 - Microphone slider with mute and input device picker (shown when an input
   device exists).
 - Brightness slider per display (internal backlight or DDC/CI monitors).
-- Toggles: Wi-Fi and Bluetooth (with network/device lists), Power Mode
+- Network toggle: Wi-Fi on machines that have it, Ethernet otherwise
+  (connect/disconnect the wired connection); its page lists the Ethernet
+  connections and the Wi-Fi networks.
+- Toggles: Bluetooth (with the device list), Power Mode
   (power-saver / balanced / performance), Airplane Mode, Do Not Disturb,
   Night Light, Dark Style, Battery, Clipboard and Screenshot.
-- Clipboard history: the last 15 entries (text, links and image thumbnails);
+- Clipboard history (full-width pill above the notifications): the last 15 entries (text, links and image thumbnails);
   picking one puts it back on the clipboard. It keeps Plasma's clipboard
   engine running, so history is recorded even without Plasma's system tray.
 - Notification history with app icon, actions, close and "Clear".

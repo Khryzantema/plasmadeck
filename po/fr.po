@@ -11,7 +11,7 @@ msgstr ""
 msgid "System Tray"
 msgstr "Boîte à miniatures"
 
-#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:338
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
@@ -27,7 +27,7 @@ msgstr "Aucun appareil appairé"
 msgid "Disconnecting…"
 msgstr "Déconnexion…"
 
-#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/NetworkPage.qml:115
 msgid "Connecting…"
 msgstr "Connexion…"
 
@@ -35,11 +35,11 @@ msgstr "Connexion…"
 msgid "Connected · %1% battery"
 msgstr "Connecté · batterie %1 %"
 
-#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/NetworkPage.qml:118
 msgid "Connected"
 msgstr "Connecté"
 
-#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:324
 msgid "Not connected"
 msgstr "Non connecté"
 
@@ -63,7 +63,7 @@ msgstr "Afficher"
 msgid "Pin to start"
 msgstr "Épingler au début"
 
-#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:354
 msgid "Power Mode"
 msgstr "Mode d’énergie"
 
@@ -103,88 +103,104 @@ msgstr "Choisir le microphone"
 msgid "Brightness of %1"
 msgstr "Luminosité de %1"
 
-#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:24 package/contents/ui/NetworkPage.qml:40
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: package/contents/ui/FullRepresentation.qml:306
-msgid "Show Wi-Fi networks"
-msgstr "Afficher les réseaux Wi-Fi"
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:40
+msgid "Ethernet"
+msgstr "Ethernet"
 
-#: package/contents/ui/FullRepresentation.qml:320
+#: package/contents/ui/FullRepresentation.qml:316
+msgid "Disconnected"
+msgstr "Déconnecté"
+
+#: package/contents/ui/FullRepresentation.qml:324
+msgid "Ethernet: %1"
+msgstr "Ethernet : %1"
+
+#: package/contents/ui/FullRepresentation.qml:327
+msgid "Show networks"
+msgstr "Afficher les réseaux"
+
+#: package/contents/ui/FullRepresentation.qml:341
 msgid "Show Bluetooth devices"
 msgstr "Afficher les appareils Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:337
+#: package/contents/ui/FullRepresentation.qml:358
 msgid "Choose power mode"
 msgstr "Choisir le mode d’énergie"
 
-#: package/contents/ui/FullRepresentation.qml:348
+#: package/contents/ui/FullRepresentation.qml:369
 msgid "Airplane Mode"
 msgstr "Mode avion"
 
-#: package/contents/ui/FullRepresentation.qml:358
+#: package/contents/ui/FullRepresentation.qml:379
 msgid "Do Not Disturb"
 msgstr "Ne pas déranger"
 
-#: package/contents/ui/FullRepresentation.qml:370
+#: package/contents/ui/FullRepresentation.qml:391
 msgid "Night Light"
 msgstr "Éclairage nocturne"
 
-#: package/contents/ui/FullRepresentation.qml:381
+#: package/contents/ui/FullRepresentation.qml:402
 msgid "Dark Style"
 msgstr "Style sombre"
 
-#: package/contents/ui/FullRepresentation.qml:390
+#: package/contents/ui/FullRepresentation.qml:411
 msgid "Battery"
 msgstr "Batterie"
 
-#: package/contents/ui/FullRepresentation.qml:392
+#: package/contents/ui/FullRepresentation.qml:413
 msgid "%1% · charging"
 msgstr "%1 % · en charge"
 
-#: package/contents/ui/FullRepresentation.qml:393
+#: package/contents/ui/FullRepresentation.qml:414
 msgctxt "Battery percentage"
 msgid "%1%"
 msgstr "%1 %"
 
-#: package/contents/ui/FullRepresentation.qml:406
-msgid "Clipboard"
-msgstr "Presse-papiers"
-
-#: package/contents/ui/FullRepresentation.qml:407
-msgid "Empty"
-msgstr "Vide"
-
-#: package/contents/ui/FullRepresentation.qml:410
-msgid "Show clipboard history"
-msgstr "Afficher l’historique du presse-papiers"
-
-#: package/contents/ui/FullRepresentation.qml:420
+#: package/contents/ui/FullRepresentation.qml:425
 msgid "Screenshot"
 msgstr "Capture d’écran"
 
-#: package/contents/ui/WifiPage.qml:24
+#: package/contents/ui/FullRepresentation.qml:442
+msgid "Clipboard"
+msgstr "Presse-papiers"
+
+#: package/contents/ui/FullRepresentation.qml:443
+msgid "Empty"
+msgstr "Vide"
+
+#: package/contents/ui/FullRepresentation.qml:446
+msgid "Show clipboard history"
+msgstr "Afficher l’historique du presse-papiers"
+
+#: package/contents/ui/NetworkPage.qml:21
+msgid "Network"
+msgstr "Réseau"
+
+#: package/contents/ui/NetworkPage.qml:29
 msgid "All Networks Settings…"
 msgstr "Paramètres de tous les réseaux…"
 
-#: package/contents/ui/WifiPage.qml:25
+#: package/contents/ui/NetworkPage.qml:30
 msgid "No networks found"
 msgstr "Aucun réseau trouvé"
 
-#: package/contents/ui/WifiPage.qml:104
+#: package/contents/ui/NetworkPage.qml:120
 msgid "Saved"
 msgstr "Enregistré"
 
-#: package/contents/ui/WifiPage.qml:134
+#: package/contents/ui/NetworkPage.qml:150
 msgid "Password"
 msgstr "Mot de passe"
 
-#: package/contents/ui/WifiPage.qml:135
+#: package/contents/ui/NetworkPage.qml:151
 msgid "Password for %1"
 msgstr "Mot de passe pour %1"
 
-#: package/contents/ui/WifiPage.qml:147
+#: package/contents/ui/NetworkPage.qml:163
 msgid "Connect"
 msgstr "Se connecter"
 
@@ -268,11 +284,11 @@ msgstr "Effacer"
 msgid "Clear clipboard history"
 msgstr "Effacer l’historique du presse-papiers"
 
-#: package/contents/ui/components/ClipboardMenu.qml:62
+#: package/contents/ui/components/ClipboardMenu.qml:65
 msgid "Clipboard is empty"
 msgstr "Le presse-papiers est vide"
 
-#: package/contents/ui/components/ClipboardMenu.qml:79
+#: package/contents/ui/components/ClipboardMenu.qml:82
 msgid "Image"
 msgstr "Image"
 
@@ -309,7 +325,7 @@ msgctxt "Slider value as a percentage"
 msgid "%1%"
 msgstr "%1 %"
 
-#: package/contents/ui/components/SubPage.qml:46
+#: package/contents/ui/components/SubPage.qml:54
 msgid "Back"
 msgstr "Retour"
 

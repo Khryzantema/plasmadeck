@@ -10,20 +10,35 @@ import org.kde.plasma.extras as PlasmaExtras
 
 import "components"
 
-// Wi-Fi sub-page: on/off switch, the list of networks (connect, disconnect,
-// inline password for new protected networks) and a link to the settings.
+// Network sub-page: Ethernet connections and Wi-Fi networks in sections
+// (connect, disconnect, inline password for new protected Wi-Fi networks),
+// the Wi-Fi switch when there is Wi-Fi, and a link to the settings.
 SubPage {
     id: page
 
     required property Item network
 
-    title: i18n("Wi-Fi")
-    iconName: "network-wireless-symbolic"
+    title: i18n("Network")
+    iconName: network.wifiAvailable ? "network-wireless-symbolic" : "network-wired-symbolic"
+    showSwitch: network.wifiAvailable
+    switchLabel: i18n("Wi-Fi")
     checked: network.wifiEnabled
+    // Wired connections stay listed while Wi-Fi is off.
+    listVisible: true
     settingsModule: "kcm_networkmanagement"
     settingsLabel: i18n("All Networks Settings…")
     placeholderText: i18n("No networks found")
-    model: network.wifiNetworks
+    model: network.networks
+
+    sectionProperty: "Type"
+    sectionDelegate: Kirigami.Heading {
+        required property string section
+        width: ListView.view ? ListView.view.width : implicitWidth
+        topPadding: Kirigami.Units.smallSpacing
+        level: 5
+        opacity: 0.8
+        text: Number(section) === page.network.typeWired ? i18n("Ethernet") : i18n("Wi-Fi")
+    }
 
     onToggled: checked => network.setWifiEnabled(checked)
 
@@ -32,7 +47,7 @@ SubPage {
         interval: 10000
         repeat: true
         triggeredOnStart: true
-        running: page.visible && page.checked
+        running: page.visible && page.network.wifiAvailable && page.checked
         onTriggered: page.network.requestScan()
     }
 
@@ -44,6 +59,7 @@ SubPage {
 
         readonly property bool active: page.network.isActive(model)
         readonly property bool connecting: page.network.isConnecting(model)
+        readonly property bool wired: page.network.isWired(model)
         property bool askingPassword: false
 
         width: ListView.view.width
@@ -71,7 +87,7 @@ SubPage {
                 spacing: Kirigami.Units.smallSpacing
 
                 Kirigami.Icon {
-                    source: row.model.ConnectionIcon
+                    source: row.wired ? (row.active ? "network-wired-activated-symbolic" : "network-wired-symbolic") : row.model.ConnectionIcon
                     Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
                     Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
                 }
@@ -101,7 +117,7 @@ SubPage {
                             if (row.active) {
                                 return i18n("Connected");
                             }
-                            return row.model.Uuid ? i18n("Saved") : "";
+                            return row.model.Uuid && !row.wired ? i18n("Saved") : "";
                         }
                     }
                 }

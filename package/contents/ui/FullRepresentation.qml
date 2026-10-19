@@ -46,7 +46,7 @@ PlasmaExtras.Representation {
     function openPage(page) {
         openMenu = "";
         pageOpener = Window.activeFocusItem;
-        stack.push(page === "wifi" ? wifiPage : bluetoothPage);
+        stack.push(page === "network" ? networkPage : bluetoothPage);
         stack.currentItem.forceActiveFocus(Qt.TabFocusReason);
     }
 
@@ -184,8 +184,8 @@ PlasmaExtras.Representation {
     }
 
     Component {
-        id: wifiPage
-        WifiPage {
+        id: networkPage
+        NetworkPage {
             network: full.network
             onBack: full.closePage()
         }
@@ -294,18 +294,39 @@ PlasmaExtras.Representation {
                 rowSpacing: Kirigami.Units.smallSpacing * 2
                 columnSpacing: Kirigami.Units.smallSpacing * 2
 
+                // Network: Wi-Fi when the machine has it, otherwise Ethernet.
+                // The arrow opens the network page with both.
                 QuickToggle {
+                    readonly property Item net: full.network
+                    readonly property bool wifiMode: net?.wifiPresence.shown ?? false
+
                     Layout.fillWidth: true
-                    visible: full.network?.wifiPresence.shown ?? false
-                    unavailable: full.network?.wifiPresence.unavailable ?? false
-                    checked: full.network?.wifiEnabled ?? false
-                    iconName: !checked ? "network-wireless-disconnected-symbolic" : "network-wireless-symbolic"
-                    title: i18n("Wi-Fi")
-                    subtitle: !checked ? "" : (full.network.wifiNetworkName || i18n("Not connected"))
+                    visible: wifiMode || (net?.wiredPresence.shown ?? false)
+                    unavailable: wifiMode ? net.wifiPresence.unavailable : (net?.wiredPresence.unavailable ?? false)
+                    checked: wifiMode ? net.wifiEnabled : (net?.wiredConnected ?? false)
+                    iconName: wifiMode
+                        ? (checked ? "network-wireless-symbolic" : "network-wireless-disconnected-symbolic")
+                        : (checked ? "network-wired-activated-symbolic" : "network-wired-disconnected-symbolic")
+                    title: wifiMode ? i18n("Wi-Fi") : i18n("Ethernet")
+                    subtitle: {
+                        if (!net) {
+                            return "";
+                        }
+                        if (!wifiMode) {
+                            return net.wiredConnected ? net.wiredConnectionName : i18n("Disconnected");
+                        }
+                        if (!checked) {
+                            return "";
+                        }
+                        if (net.wifiNetworkName) {
+                            return net.wifiNetworkName;
+                        }
+                        return net.wiredConnected ? i18n("Ethernet: %1", net.wiredConnectionName) : i18n("Not connected");
+                    }
                     hasMenu: true
-                    menuLabel: i18n("Show Wi-Fi networks")
-                    onToggled: full.network.setWifiEnabled(!checked)
-                    onMenuRequested: full.openPage("wifi")
+                    menuLabel: i18n("Show networks")
+                    onToggled: wifiMode ? net.setWifiEnabled(!checked) : net.setWiredConnected(!checked)
+                    onMenuRequested: full.openPage("network")
                 }
 
                 QuickToggle {
@@ -410,13 +431,7 @@ PlasmaExtras.Representation {
                 }
             }
 
-            NotificationList {
-                Layout.fillWidth: true
-                visible: full.notifications !== null
-                backend: full.notifications
-            }
-
-            // Clipboard at the bottom, as wide as the popup so the copied text fits.
+            // Clipboard, as wide as the popup so the copied text fits.
             QuickToggle {
                 id: clipboardToggle
                 Layout.fillWidth: true
@@ -432,6 +447,12 @@ PlasmaExtras.Representation {
                 // Nothing to switch on or off: the pill opens the history too.
                 onToggled: full.toggleMenu("clipboard")
                 onMenuRequested: full.toggleMenu("clipboard")
+            }
+
+            NotificationList {
+                Layout.fillWidth: true
+                visible: full.notifications !== null
+                backend: full.notifications
             }
         }
     }

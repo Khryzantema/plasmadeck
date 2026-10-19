@@ -11,7 +11,7 @@ msgstr ""
 msgid "System Tray"
 msgstr "Systemabschnitt"
 
-#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:338
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
@@ -27,7 +27,7 @@ msgstr "Keine gekoppelten Geräte"
 msgid "Disconnecting…"
 msgstr "Verbindung wird getrennt …"
 
-#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/NetworkPage.qml:115
 msgid "Connecting…"
 msgstr "Verbindung wird hergestellt …"
 
@@ -35,11 +35,11 @@ msgstr "Verbindung wird hergestellt …"
 msgid "Connected · %1% battery"
 msgstr "Verbunden · %1 % Akku"
 
-#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/NetworkPage.qml:118
 msgid "Connected"
 msgstr "Verbunden"
 
-#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:324
 msgid "Not connected"
 msgstr "Nicht verbunden"
 
@@ -63,7 +63,7 @@ msgstr "Anzeigen"
 msgid "Pin to start"
 msgstr "Am Anfang anheften"
 
-#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:354
 msgid "Power Mode"
 msgstr "Energiemodus"
 
@@ -103,88 +103,104 @@ msgstr "Mikrofon auswählen"
 msgid "Brightness of %1"
 msgstr "Helligkeit von %1"
 
-#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:24 package/contents/ui/NetworkPage.qml:40
 msgid "Wi-Fi"
 msgstr "WLAN"
 
-#: package/contents/ui/FullRepresentation.qml:306
-msgid "Show Wi-Fi networks"
-msgstr "WLAN-Netzwerke anzeigen"
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:40
+msgid "Ethernet"
+msgstr "Ethernet"
 
-#: package/contents/ui/FullRepresentation.qml:320
+#: package/contents/ui/FullRepresentation.qml:316
+msgid "Disconnected"
+msgstr "Nicht verbunden"
+
+#: package/contents/ui/FullRepresentation.qml:324
+msgid "Ethernet: %1"
+msgstr "Ethernet: %1"
+
+#: package/contents/ui/FullRepresentation.qml:327
+msgid "Show networks"
+msgstr "Netzwerke anzeigen"
+
+#: package/contents/ui/FullRepresentation.qml:341
 msgid "Show Bluetooth devices"
 msgstr "Bluetooth-Geräte anzeigen"
 
-#: package/contents/ui/FullRepresentation.qml:337
+#: package/contents/ui/FullRepresentation.qml:358
 msgid "Choose power mode"
 msgstr "Energiemodus auswählen"
 
-#: package/contents/ui/FullRepresentation.qml:348
+#: package/contents/ui/FullRepresentation.qml:369
 msgid "Airplane Mode"
 msgstr "Flugmodus"
 
-#: package/contents/ui/FullRepresentation.qml:358
+#: package/contents/ui/FullRepresentation.qml:379
 msgid "Do Not Disturb"
 msgstr "Nicht stören"
 
-#: package/contents/ui/FullRepresentation.qml:370
+#: package/contents/ui/FullRepresentation.qml:391
 msgid "Night Light"
 msgstr "Nachtfarben"
 
-#: package/contents/ui/FullRepresentation.qml:381
+#: package/contents/ui/FullRepresentation.qml:402
 msgid "Dark Style"
 msgstr "Dunkler Stil"
 
-#: package/contents/ui/FullRepresentation.qml:390
+#: package/contents/ui/FullRepresentation.qml:411
 msgid "Battery"
 msgstr "Akku"
 
-#: package/contents/ui/FullRepresentation.qml:392
+#: package/contents/ui/FullRepresentation.qml:413
 msgid "%1% · charging"
 msgstr "%1 % · wird geladen"
 
-#: package/contents/ui/FullRepresentation.qml:393
+#: package/contents/ui/FullRepresentation.qml:414
 msgctxt "Battery percentage"
 msgid "%1%"
 msgstr "%1 %"
 
-#: package/contents/ui/FullRepresentation.qml:406
-msgid "Clipboard"
-msgstr "Zwischenablage"
-
-#: package/contents/ui/FullRepresentation.qml:407
-msgid "Empty"
-msgstr "Leer"
-
-#: package/contents/ui/FullRepresentation.qml:410
-msgid "Show clipboard history"
-msgstr "Verlauf der Zwischenablage anzeigen"
-
-#: package/contents/ui/FullRepresentation.qml:420
+#: package/contents/ui/FullRepresentation.qml:425
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
-#: package/contents/ui/WifiPage.qml:24
+#: package/contents/ui/FullRepresentation.qml:442
+msgid "Clipboard"
+msgstr "Zwischenablage"
+
+#: package/contents/ui/FullRepresentation.qml:443
+msgid "Empty"
+msgstr "Leer"
+
+#: package/contents/ui/FullRepresentation.qml:446
+msgid "Show clipboard history"
+msgstr "Verlauf der Zwischenablage anzeigen"
+
+#: package/contents/ui/NetworkPage.qml:21
+msgid "Network"
+msgstr "Netzwerk"
+
+#: package/contents/ui/NetworkPage.qml:29
 msgid "All Networks Settings…"
 msgstr "Alle Netzwerkeinstellungen …"
 
-#: package/contents/ui/WifiPage.qml:25
+#: package/contents/ui/NetworkPage.qml:30
 msgid "No networks found"
 msgstr "Keine Netzwerke gefunden"
 
-#: package/contents/ui/WifiPage.qml:104
+#: package/contents/ui/NetworkPage.qml:120
 msgid "Saved"
 msgstr "Gespeichert"
 
-#: package/contents/ui/WifiPage.qml:134
+#: package/contents/ui/NetworkPage.qml:150
 msgid "Password"
 msgstr "Passwort"
 
-#: package/contents/ui/WifiPage.qml:135
+#: package/contents/ui/NetworkPage.qml:151
 msgid "Password for %1"
 msgstr "Passwort für %1"
 
-#: package/contents/ui/WifiPage.qml:147
+#: package/contents/ui/NetworkPage.qml:163
 msgid "Connect"
 msgstr "Verbinden"
 
@@ -268,11 +284,11 @@ msgstr "Leeren"
 msgid "Clear clipboard history"
 msgstr "Verlauf der Zwischenablage leeren"
 
-#: package/contents/ui/components/ClipboardMenu.qml:62
+#: package/contents/ui/components/ClipboardMenu.qml:65
 msgid "Clipboard is empty"
 msgstr "Die Zwischenablage ist leer"
 
-#: package/contents/ui/components/ClipboardMenu.qml:79
+#: package/contents/ui/components/ClipboardMenu.qml:82
 msgid "Image"
 msgstr "Bild"
 
@@ -309,7 +325,7 @@ msgctxt "Slider value as a percentage"
 msgid "%1%"
 msgstr "%1 %"
 
-#: package/contents/ui/components/SubPage.qml:46
+#: package/contents/ui/components/SubPage.qml:54
 msgid "Back"
 msgstr "Zurück"
 

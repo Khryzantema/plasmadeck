@@ -10,33 +10,36 @@ import org.kde.plasma.workspace.dbus as DBus
 import "../components"
 
 // Private API: org.kde.plasma.networkmanagement (plasma-nm).
+// Wi-Fi, Ethernet (wired connections) and airplane mode.
 Item {
     id: root
     visible: false
 
+    // --- Overall state (panel icon, tooltip) ---
     readonly property string panelIcon: connectionIcon.connectionIcon ? connectionIcon.connectionIcon + "-symbolic" : ""
     readonly property string statusText: networkStatus.activeConnections
     readonly property bool connecting: connectionIcon.connecting
 
+    // --- Wi-Fi ---
     readonly property bool wifiAvailable: availableDevices.wirelessDeviceAvailable
     readonly property bool wifiEnabled: enabledConnections.wirelessEnabled
-    readonly property string wifiNetworkName: activeWifi.count > 0 ? (activeWifi.objectAt(0)?.name ?? "") : ""
+    readonly property string wifiNetworkName: activeName(PlasmaNM.Enums.Wireless)
+
+    // --- Ethernet ---
+    readonly property bool wiredAvailable: availableDevices.wiredDeviceAvailable
+    readonly property string wiredConnectionName: activeName(PlasmaNM.Enums.Wired)
+    readonly property bool wiredConnected: wiredConnectionName !== ""
 
     // Same rule as the native Networks applet.
     readonly property bool airplaneModeAvailable: availableDevices.modemDeviceAvailable || availableDevices.wirelessDeviceAvailable
     readonly property bool airplaneMode: PlasmaNM.Configuration.airplaneModeEnabled
 
-    // Wireless networks, sorted like the native applet (active first, then known, then by signal).
-    readonly property KItemModels.KSortFilterProxyModel wifiNetworks: KItemModels.KSortFilterProxyModel {
-        sourceModel: root.wifiAvailable ? appletProxyModel : null
-        filterRowCallback: (sourceRow, sourceParent) => {
-            const index = sourceModel.index(sourceRow, 0, sourceParent);
-            return sourceModel.data(index, KItemModels.KRoleNames.role("Type")) === PlasmaNM.Enums.Wireless;
-        }
-    }
-
     readonly property Presence wifiPresence: Presence {
         available: root.wifiAvailable && nmWatcher.registered
+        serviceUp: nmWatcher.registered
+    }
+    readonly property Presence wiredPresence: Presence {
+        available: root.wiredAvailable && nmWatcher.registered
         serviceUp: nmWatcher.registered
     }
     readonly property Presence airplanePresence: Presence {
@@ -44,18 +47,64 @@ Item {
         serviceUp: nmWatcher.registered
     }
 
-    DBus.DBusServiceWatcher {
-        id: nmWatcher
-        busType: DBus.BusType.System
-        watchedService: "org.freedesktop.NetworkManager"
+    // Connection types, for the sections of the network page.
+    readonly property int typeWired: PlasmaNM.Enums.Wired
+    readonly property int typeWireless: PlasmaNM.Enums.Wireless
+
+    // Everything the network page lists: wired connections first, then Wi-Fi
+    // networks (when Wi-Fi is on). Inside each group the order stays the one of
+    // the native applet (active first, then known, then by signal), because the
+    // sort by type is stable.
+    readonly property KItemModels.KSortFilterProxyModel networks: KItemModels.KSortFilterProxyModel {
+        sourceModel: appletProxyModel
+        sortRoleName: "Type"
+        sortOrder: Qt.AscendingOrder
+        filterRowCallback: (sourceRow, sourceParent) => {
+            const type = sourceModel.data(sourceModel.index(sourceRow, 0, sourceParent), KItemModels.KRoleNames.role("Type"));
+            return type === PlasmaNM.Enums.Wired
+                || (type === PlasmaNM.Enums.Wireless && root.wifiAvailable && root.wifiEnabled);
+        }
     }
+
+    onWifiEnabledChanged: networks.invalidateFilter()
+    onWifiAvailableChanged: networks.invalidateFilter()
+
+    // --- Actions ---
 
     function setWifiEnabled(enable) {
         handler.enableWireless(enable);
     }
 
+    // Turning Ethernet on brings up the wired connection used most recently;
+    // turning it off disconnects the active one.
+    function setWiredConnected(enable) {
+        const all = [];
+        for (let i = 0; i < wiredConnections.count; i++) {
+            all.push(wiredConnections.objectAt(i));
+        }
+        if (!enable) {
+            all.filter(c => isActive(c.data)).forEach(c => toggleNetwork(c.data));
+            return;
+        }
+        const known = all.filter(c => c.data.Uuid).sort((a, b) => b.lastUsed - a.lastUsed);
+        if (known.length > 0) {
+            toggleNetwork(known[0].data);
+        }
+    }
+
+    function setAirplaneMode(enable) {
+        handler.enableAirplaneMode(enable);
+        PlasmaNM.Configuration.airplaneModeEnabled = enable;
+    }
+
     function requestScan() {
         handler.requestScan();
+    }
+
+    // --- Helpers for list entries (model roles of plasma-nm's NetworkModel) ---
+
+    function isWired(network) {
+        return network.Type === PlasmaNM.Enums.Wired;
     }
 
     function isSecured(securityType) {
@@ -89,15 +138,19 @@ Item {
         }
     }
 
-    PlasmaNM.AppletProxyModel {
-        id: appletProxyModel
-        sourceModel: networkModel
+    // Name of the active connection of a given type, or "".
+    function activeName(type) {
+        const list = type === PlasmaNM.Enums.Wired ? wiredConnections : wifiConnections;
+        for (let i = 0; i < list.count; i++) {
+            const c = list.objectAt(i);
+            if (c && c.data.ConnectionState === PlasmaNM.Enums.Activated) {
+                return c.data.ItemUniqueName;
+            }
+        }
+        return "";
     }
 
-    function setAirplaneMode(enable) {
-        handler.enableAirplaneMode(enable);
-        PlasmaNM.Configuration.airplaneModeEnabled = enable;
-    }
+    // --- plasma-nm objects ---
 
     PlasmaNM.NetworkStatus {
         id: networkStatus
@@ -120,26 +173,48 @@ Item {
         id: handler
     }
 
-    // The model is only needed to name the active Wi-Fi network.
     PlasmaNM.NetworkModel {
         id: networkModel
     }
 
-    KItemModels.KSortFilterProxyModel {
-        id: activeWifiModel
-        sourceModel: root.wifiAvailable ? networkModel : null
-        filterRowCallback: (sourceRow, sourceParent) => {
-            const index = sourceModel.index(sourceRow, 0, sourceParent);
-            return sourceModel.data(index, KItemModels.KRoleNames.role("Type")) === PlasmaNM.Enums.Wireless
-                && sourceModel.data(index, KItemModels.KRoleNames.role("ConnectionState")) === PlasmaNM.Enums.Activated;
+    PlasmaNM.AppletProxyModel {
+        id: appletProxyModel
+        sourceModel: networkModel
+    }
+
+    DBus.DBusServiceWatcher {
+        id: nmWatcher
+        busType: DBus.BusType.System
+        watchedService: "org.freedesktop.NetworkManager"
+    }
+
+    // Connections of one type, kept as objects so their roles can be read from JS.
+    // (Inline components cannot see the ids of this file, so the model is passed in.)
+    component ConnectionsOfType: Instantiator {
+        id: connections
+        property int type
+        property var source
+        model: KItemModels.KSortFilterProxyModel {
+            sourceModel: connections.source
+            filterRowCallback: (sourceRow, sourceParent) => sourceModel.data(sourceModel.index(sourceRow, 0, sourceParent), KItemModels.KRoleNames.role("Type")) === connections.type
+        }
+        delegate: QtObject {
+            required property var model
+            readonly property var data: model
+            // Time of the last use (ms since the epoch), for picking a connection to bring up.
+            readonly property real lastUsed: model.TimeStamp ? new Date(model.TimeStamp).getTime() : 0
         }
     }
 
-    Instantiator {
-        id: activeWifi
-        model: activeWifiModel
-        delegate: QtObject {
-            readonly property string name: model.ItemUniqueName
-        }
+    ConnectionsOfType {
+        id: wiredConnections
+        type: PlasmaNM.Enums.Wired
+        source: networkModel
+    }
+
+    ConnectionsOfType {
+        id: wifiConnections
+        type: PlasmaNM.Enums.Wireless
+        source: networkModel
     }
 }

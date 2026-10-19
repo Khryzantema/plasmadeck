@@ -11,7 +11,7 @@ msgstr ""
 msgid "System Tray"
 msgstr "Systémová část panelu"
 
-#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:338
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
@@ -27,7 +27,7 @@ msgstr "Žádná spárovaná zařízení"
 msgid "Disconnecting…"
 msgstr "Odpojování…"
 
-#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/NetworkPage.qml:115
 msgid "Connecting…"
 msgstr "Připojování…"
 
@@ -35,11 +35,11 @@ msgstr "Připojování…"
 msgid "Connected · %1% battery"
 msgstr "Připojeno · baterie %1 %"
 
-#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/NetworkPage.qml:118
 msgid "Connected"
 msgstr "Připojeno"
 
-#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:324
 msgid "Not connected"
 msgstr "Nepřipojeno"
 
@@ -63,7 +63,7 @@ msgstr "Zobrazit"
 msgid "Pin to start"
 msgstr "Připnout na začátek"
 
-#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:354
 msgid "Power Mode"
 msgstr "Režim napájení"
 
@@ -103,88 +103,104 @@ msgstr "Vybrat mikrofon"
 msgid "Brightness of %1"
 msgstr "Jas %1"
 
-#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:24 package/contents/ui/NetworkPage.qml:40
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: package/contents/ui/FullRepresentation.qml:306
-msgid "Show Wi-Fi networks"
-msgstr "Zobrazit sítě Wi-Fi"
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:40
+msgid "Ethernet"
+msgstr "Ethernet"
 
-#: package/contents/ui/FullRepresentation.qml:320
+#: package/contents/ui/FullRepresentation.qml:316
+msgid "Disconnected"
+msgstr "Odpojeno"
+
+#: package/contents/ui/FullRepresentation.qml:324
+msgid "Ethernet: %1"
+msgstr "Ethernet: %1"
+
+#: package/contents/ui/FullRepresentation.qml:327
+msgid "Show networks"
+msgstr "Zobrazit sítě"
+
+#: package/contents/ui/FullRepresentation.qml:341
 msgid "Show Bluetooth devices"
 msgstr "Zobrazit zařízení Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:337
+#: package/contents/ui/FullRepresentation.qml:358
 msgid "Choose power mode"
 msgstr "Vybrat režim napájení"
 
-#: package/contents/ui/FullRepresentation.qml:348
+#: package/contents/ui/FullRepresentation.qml:369
 msgid "Airplane Mode"
 msgstr "Režim letadlo"
 
-#: package/contents/ui/FullRepresentation.qml:358
+#: package/contents/ui/FullRepresentation.qml:379
 msgid "Do Not Disturb"
 msgstr "Nerušit"
 
-#: package/contents/ui/FullRepresentation.qml:370
+#: package/contents/ui/FullRepresentation.qml:391
 msgid "Night Light"
 msgstr "Noční světlo"
 
-#: package/contents/ui/FullRepresentation.qml:381
+#: package/contents/ui/FullRepresentation.qml:402
 msgid "Dark Style"
 msgstr "Tmavý styl"
 
-#: package/contents/ui/FullRepresentation.qml:390
+#: package/contents/ui/FullRepresentation.qml:411
 msgid "Battery"
 msgstr "Baterie"
 
-#: package/contents/ui/FullRepresentation.qml:392
+#: package/contents/ui/FullRepresentation.qml:413
 msgid "%1% · charging"
 msgstr "%1 % · nabíjí se"
 
-#: package/contents/ui/FullRepresentation.qml:393
+#: package/contents/ui/FullRepresentation.qml:414
 msgctxt "Battery percentage"
 msgid "%1%"
 msgstr "%1 %"
 
-#: package/contents/ui/FullRepresentation.qml:406
-msgid "Clipboard"
-msgstr "Schránka"
-
-#: package/contents/ui/FullRepresentation.qml:407
-msgid "Empty"
-msgstr "Prázdná"
-
-#: package/contents/ui/FullRepresentation.qml:410
-msgid "Show clipboard history"
-msgstr "Zobrazit historii schránky"
-
-#: package/contents/ui/FullRepresentation.qml:420
+#: package/contents/ui/FullRepresentation.qml:425
 msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
-#: package/contents/ui/WifiPage.qml:24
+#: package/contents/ui/FullRepresentation.qml:442
+msgid "Clipboard"
+msgstr "Schránka"
+
+#: package/contents/ui/FullRepresentation.qml:443
+msgid "Empty"
+msgstr "Prázdná"
+
+#: package/contents/ui/FullRepresentation.qml:446
+msgid "Show clipboard history"
+msgstr "Zobrazit historii schránky"
+
+#: package/contents/ui/NetworkPage.qml:21
+msgid "Network"
+msgstr "Síť"
+
+#: package/contents/ui/NetworkPage.qml:29
 msgid "All Networks Settings…"
 msgstr "Nastavení všech sítí…"
 
-#: package/contents/ui/WifiPage.qml:25
+#: package/contents/ui/NetworkPage.qml:30
 msgid "No networks found"
 msgstr "Nenalezeny žádné sítě"
 
-#: package/contents/ui/WifiPage.qml:104
+#: package/contents/ui/NetworkPage.qml:120
 msgid "Saved"
 msgstr "Uloženo"
 
-#: package/contents/ui/WifiPage.qml:134
+#: package/contents/ui/NetworkPage.qml:150
 msgid "Password"
 msgstr "Heslo"
 
-#: package/contents/ui/WifiPage.qml:135
+#: package/contents/ui/NetworkPage.qml:151
 msgid "Password for %1"
 msgstr "Heslo pro %1"
 
-#: package/contents/ui/WifiPage.qml:147
+#: package/contents/ui/NetworkPage.qml:163
 msgid "Connect"
 msgstr "Připojit"
 
@@ -270,11 +286,11 @@ msgstr "Vymazat"
 msgid "Clear clipboard history"
 msgstr "Vymazat historii schránky"
 
-#: package/contents/ui/components/ClipboardMenu.qml:62
+#: package/contents/ui/components/ClipboardMenu.qml:65
 msgid "Clipboard is empty"
 msgstr "Schránka je prázdná"
 
-#: package/contents/ui/components/ClipboardMenu.qml:79
+#: package/contents/ui/components/ClipboardMenu.qml:82
 msgid "Image"
 msgstr "Obrázek"
 
@@ -311,7 +327,7 @@ msgctxt "Slider value as a percentage"
 msgid "%1%"
 msgstr "%1 %"
 
-#: package/contents/ui/components/SubPage.qml:46
+#: package/contents/ui/components/SubPage.qml:54
 msgid "Back"
 msgstr "Zpět"
 

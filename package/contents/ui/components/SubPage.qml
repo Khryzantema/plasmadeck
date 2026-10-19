@@ -17,11 +17,19 @@ FocusScope {
     property string title
     property string iconName
     property bool checked
+    // The on/off switch in the header (hidden e.g. on a machine without Wi-Fi).
+    property bool showSwitch: true
+    property string switchLabel: title
+    // Whether the list is shown; by default only while switched on.
+    property bool listVisible: checked
     property string settingsModule
     property string settingsLabel
     property string placeholderText
     property alias model: list.model
     property alias delegate: list.delegate
+    // Optional section headers (ListView.section).
+    property string sectionProperty
+    property Component sectionDelegate
 
     signal back()
     signal toggled(bool checked)
@@ -66,8 +74,9 @@ FocusScope {
             }
 
             PlasmaComponents3.Switch {
+                visible: page.showSwitch
                 checked: page.checked
-                Accessible.name: page.title
+                Accessible.name: page.switchLabel
                 onToggled: page.toggled(checked)
             }
         }
@@ -76,11 +85,13 @@ FocusScope {
             Layout.fillWidth: true
             // Uses the popup's fixed height; the list scrolls inside it.
             Layout.fillHeight: true
-            visible: page.checked
+            visible: page.listVisible
 
             ListView {
                 id: list
                 clip: true
+                section.property: page.sectionProperty
+                section.delegate: page.sectionDelegate
                 spacing: Kirigami.Units.smallSpacing
                 keyNavigationEnabled: true
                 activeFocusOnTab: true
@@ -99,7 +110,7 @@ FocusScope {
         // Keeps the settings button at the bottom while the list is hidden.
         Item {
             Layout.fillHeight: true
-            visible: !page.checked
+            visible: !page.listVisible
         }
 
         PlasmaComponents3.ToolButton {

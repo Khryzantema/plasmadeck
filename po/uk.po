@@ -11,7 +11,7 @@ msgstr ""
 msgid "System Tray"
 msgstr "Системний лоток"
 
-#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:317
+#: package/contents/ui/BluetoothPage.qml:19 package/contents/ui/FullRepresentation.qml:338
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
@@ -27,7 +27,7 @@ msgstr "Немає спарених пристроїв"
 msgid "Disconnecting…"
 msgstr "Від’єднання…"
 
-#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/WifiPage.qml:99
+#: package/contents/ui/BluetoothPage.qml:87 package/contents/ui/NetworkPage.qml:115
 msgid "Connecting…"
 msgstr "З’єднання…"
 
@@ -35,11 +35,11 @@ msgstr "З’єднання…"
 msgid "Connected · %1% battery"
 msgstr "З’єднано · заряд %1%"
 
-#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/WifiPage.qml:102
+#: package/contents/ui/BluetoothPage.qml:91 package/contents/ui/NetworkPage.qml:118
 msgid "Connected"
 msgstr "З’єднано"
 
-#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:304
+#: package/contents/ui/BluetoothPage.qml:93 package/contents/ui/FullRepresentation.qml:324
 msgid "Not connected"
 msgstr "Не з’єднано"
 
@@ -63,7 +63,7 @@ msgstr "Показувати"
 msgid "Pin to start"
 msgstr "Пришпилити на початку"
 
-#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:333
+#: package/contents/ui/FullRepresentation.qml:170 package/contents/ui/FullRepresentation.qml:354
 msgid "Power Mode"
 msgstr "Режим живлення"
 
@@ -103,88 +103,104 @@ msgstr "Вибрати мікрофон"
 msgid "Brightness of %1"
 msgstr "Яскравість: %1"
 
-#: package/contents/ui/FullRepresentation.qml:303 package/contents/ui/WifiPage.qml:20
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:24 package/contents/ui/NetworkPage.qml:40
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: package/contents/ui/FullRepresentation.qml:306
-msgid "Show Wi-Fi networks"
-msgstr "Показати мережі Wi-Fi"
+#: package/contents/ui/FullRepresentation.qml:310 package/contents/ui/NetworkPage.qml:40
+msgid "Ethernet"
+msgstr "Ethernet"
 
-#: package/contents/ui/FullRepresentation.qml:320
+#: package/contents/ui/FullRepresentation.qml:316
+msgid "Disconnected"
+msgstr "Від’єднано"
+
+#: package/contents/ui/FullRepresentation.qml:324
+msgid "Ethernet: %1"
+msgstr "Ethernet: %1"
+
+#: package/contents/ui/FullRepresentation.qml:327
+msgid "Show networks"
+msgstr "Показати мережі"
+
+#: package/contents/ui/FullRepresentation.qml:341
 msgid "Show Bluetooth devices"
 msgstr "Показати пристрої Bluetooth"
 
-#: package/contents/ui/FullRepresentation.qml:337
+#: package/contents/ui/FullRepresentation.qml:358
 msgid "Choose power mode"
 msgstr "Вибрати режим живлення"
 
-#: package/contents/ui/FullRepresentation.qml:348
+#: package/contents/ui/FullRepresentation.qml:369
 msgid "Airplane Mode"
 msgstr "Режим польоту"
 
-#: package/contents/ui/FullRepresentation.qml:358
+#: package/contents/ui/FullRepresentation.qml:379
 msgid "Do Not Disturb"
 msgstr "Не турбувати"
 
-#: package/contents/ui/FullRepresentation.qml:370
+#: package/contents/ui/FullRepresentation.qml:391
 msgid "Night Light"
 msgstr "Нічне світло"
 
-#: package/contents/ui/FullRepresentation.qml:381
+#: package/contents/ui/FullRepresentation.qml:402
 msgid "Dark Style"
 msgstr "Темний стиль"
 
-#: package/contents/ui/FullRepresentation.qml:390
+#: package/contents/ui/FullRepresentation.qml:411
 msgid "Battery"
 msgstr "Акумулятор"
 
-#: package/contents/ui/FullRepresentation.qml:392
+#: package/contents/ui/FullRepresentation.qml:413
 msgid "%1% · charging"
 msgstr "%1% · заряджається"
 
-#: package/contents/ui/FullRepresentation.qml:393
+#: package/contents/ui/FullRepresentation.qml:414
 msgctxt "Battery percentage"
 msgid "%1%"
 msgstr "%1%"
 
-#: package/contents/ui/FullRepresentation.qml:406
-msgid "Clipboard"
-msgstr "Буфер обміну"
-
-#: package/contents/ui/FullRepresentation.qml:407
-msgid "Empty"
-msgstr "Порожньо"
-
-#: package/contents/ui/FullRepresentation.qml:410
-msgid "Show clipboard history"
-msgstr "Показати історію буфера обміну"
-
-#: package/contents/ui/FullRepresentation.qml:420
+#: package/contents/ui/FullRepresentation.qml:425
 msgid "Screenshot"
 msgstr "Знімок екрана"
 
-#: package/contents/ui/WifiPage.qml:24
+#: package/contents/ui/FullRepresentation.qml:442
+msgid "Clipboard"
+msgstr "Буфер обміну"
+
+#: package/contents/ui/FullRepresentation.qml:443
+msgid "Empty"
+msgstr "Порожньо"
+
+#: package/contents/ui/FullRepresentation.qml:446
+msgid "Show clipboard history"
+msgstr "Показати історію буфера обміну"
+
+#: package/contents/ui/NetworkPage.qml:21
+msgid "Network"
+msgstr "Мережа"
+
+#: package/contents/ui/NetworkPage.qml:29
 msgid "All Networks Settings…"
 msgstr "Параметри всіх мереж…"
 
-#: package/contents/ui/WifiPage.qml:25
+#: package/contents/ui/NetworkPage.qml:30
 msgid "No networks found"
 msgstr "Мереж не знайдено"
 
-#: package/contents/ui/WifiPage.qml:104
+#: package/contents/ui/NetworkPage.qml:120
 msgid "Saved"
 msgstr "Збережено"
 
-#: package/contents/ui/WifiPage.qml:134
+#: package/contents/ui/NetworkPage.qml:150
 msgid "Password"
 msgstr "Пароль"
 
-#: package/contents/ui/WifiPage.qml:135
+#: package/contents/ui/NetworkPage.qml:151
 msgid "Password for %1"
 msgstr "Пароль до %1"
 
-#: package/contents/ui/WifiPage.qml:147
+#: package/contents/ui/NetworkPage.qml:163
 msgid "Connect"
 msgstr "З’єднатися"
 
@@ -270,11 +286,11 @@ msgstr "Очистити"
 msgid "Clear clipboard history"
 msgstr "Очистити історію буфера обміну"
 
-#: package/contents/ui/components/ClipboardMenu.qml:62
+#: package/contents/ui/components/ClipboardMenu.qml:65
 msgid "Clipboard is empty"
 msgstr "Буфер обміну порожній"
 
-#: package/contents/ui/components/ClipboardMenu.qml:79
+#: package/contents/ui/components/ClipboardMenu.qml:82
 msgid "Image"
 msgstr "Зображення"
 
@@ -311,7 +327,7 @@ msgctxt "Slider value as a percentage"
 msgid "%1%"
 msgstr "%1%"
 
-#: package/contents/ui/components/SubPage.qml:46
+#: package/contents/ui/components/SubPage.qml:54
 msgid "Back"
 msgstr "Назад"
 
