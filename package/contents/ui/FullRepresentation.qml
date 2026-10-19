@@ -155,6 +155,7 @@ PlasmaExtras.Representation {
         MenuOverlay {
             anchorItem: clipboardToggle
             open: full.openMenu === "clipboard" && full.clipboard !== null
+            keepLoaded: true
             onDismissed: full.openMenu = ""
             sourceComponent: ClipboardMenu {
                 clipboard: full.clipboard
@@ -273,7 +274,8 @@ PlasmaExtras.Representation {
                     required property int maxBrightness
 
                     Layout.fillWidth: true
-                    iconName: "display-brightness-symbolic"
+                    // Same icons as the panel; Breeze has no "display-brightness".
+                    iconName: brightness < maxBrightness / 2 ? "brightness-low-symbolic" : "brightness-high-symbolic"
                     iconInteractive: false
                     accessibleName: i18n("Brightness of %1", label)
                     from: 0

@@ -65,30 +65,30 @@ RowLayout {
         from: row.from
         to: row.to
         stepSize: row.stepSize
-        value: row.value
         opacity: row.dimmed ? 0.5 : 1
 
         Accessible.name: row.accessibleName
         Accessible.description: i18nc("Slider value as a percentage", "%1%", row.percent)
 
-        function resync() {
-            value = Qt.binding(() => row.value);
-        }
-
-        onMoved: {
-            row.moved(value);
-            // Keyboard and wheel changes also break the binding; restore it at once.
-            if (!pressed) {
-                Qt.callLater(resync);
-            }
-        }
+        onMoved: row.moved(value)
         onPressedChanged: {
             if (!pressed) {
-                // The backend may have clamped or rejected the last value.
-                resync();
                 row.released();
             }
         }
+    }
+
+    // The slider shows the real value, except while it is being dragged: the
+    // system answers each change a moment later with the previous value, and
+    // following those answers made the handle jump back and forth under the
+    // pointer. When released it snaps to the real value again (the backend
+    // may have clamped it).
+    Binding {
+        target: slider
+        property: "value"
+        value: row.value
+        when: !slider.pressed
+        restoreMode: Binding.RestoreNone
     }
 
     PlasmaComponents3.ToolButton {

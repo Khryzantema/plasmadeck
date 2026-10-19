@@ -66,7 +66,11 @@ Item {
             return;
         }
         device.volume = Math.round(value);
-        device.muted = value === 0;
+        // Mute at zero, unmute when moving up; only write it when it actually changes.
+        const mute = value === 0;
+        if (device.muted !== mute) {
+            device.muted = mute;
+        }
     }
 
     // Upper slider bound for a device: 150% when raising is allowed or the device is already above 100%.

@@ -18,6 +18,10 @@ Item {
     property bool open: false
     property Component sourceComponent
     readonly property Item item: loader.item
+    // Keep the card alive after it was shown once, so reopening is instant
+    // (for menus that are costly to build, like the clipboard history).
+    property bool keepLoaded: false
+    property bool wasShown: false
 
     signal dismissed()
 
@@ -43,6 +47,7 @@ Item {
 
     onOpenChanged: {
         if (open) {
+            wasShown = true;
             hideAnimation.stop();
             place();
             showAnimation.restart();
@@ -91,7 +96,7 @@ Item {
             Loader {
                 id: loader
                 width: card.width
-                active: overlay.visible
+                active: overlay.visible || (overlay.keepLoaded && overlay.wasShown)
                 sourceComponent: overlay.sourceComponent
                 onLoaded: overlay.place()
                 onImplicitHeightChanged: if (overlay.open) overlay.place()

@@ -39,9 +39,11 @@ Item {
         Qt.callLater(() => history.clearHistory());
     }
 
-    // One line preview of a text entry: whitespace collapsed, trimmed.
+    // One line preview of a text entry: whitespace collapsed, trimmed, and cut
+    // short first. History entries can be huge (a copied log of 600k characters):
+    // laying out the full text just to show one elided line froze the popup.
     function preview(text) {
-        return String(text ?? "").replace(/\s+/g, " ").trim();
+        return String(text ?? "").slice(0, 300).replace(/\s+/g, " ").trim();
     }
 
     Clipboard.KlipperInterface {
