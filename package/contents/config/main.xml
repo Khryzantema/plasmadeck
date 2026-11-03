@@ -17,6 +17,10 @@
     </group>
 
     <group name="General">
+        <entry name="pillButtons" type="Bool">
+            <label>Shape the toggle buttons of the popup as pills instead of rounded squares</label>
+            <default>false</default>
+        </entry>
         <entry name="currentDetailsTab" type="String">
             <label>Tab shown when a network connection is expanded (speed or details)</label>
             <default>speed</default>

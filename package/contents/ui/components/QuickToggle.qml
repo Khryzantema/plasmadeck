@@ -7,8 +7,9 @@ import QtQuick.Layouts
 import QtQuick.Templates as T
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasmoid
 
-// GNOME-style pill toggle: icon + title + subtitle, with an optional arrow
+// Toggle button (Plasma-style rounded square, or a pill by setting): icon + title + subtitle, with an optional arrow
 // section on the right that opens a menu or sub-view.
 Item {
     id: toggle
@@ -59,12 +60,16 @@ Item {
     enabled: !unavailable
     opacity: unavailable ? 0.6 : 1
 
+    // Plasma-style rounded squares by default; pills are a setting.
+    readonly property bool pillShape: Plasmoid.configuration.pillButtons
+    readonly property real cornerRadius: pillShape ? height / 2 : Kirigami.Units.cornerRadius * 2
+
     readonly property color foreground: effectiveChecked ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
     Rectangle {
         id: pill
         anchors.fill: parent
-        radius: height / 2
+        radius: toggle.cornerRadius
         color: toggle.effectiveChecked ? toggle.activeColor : toggle.inactiveColor
 
         Behavior on color {
@@ -125,8 +130,8 @@ Item {
             onAccent: toggle.effectiveChecked
             Layout.fillWidth: true
             Layout.fillHeight: true
-            leftRadius: toggle.height / 2
-            rightRadius: toggle.hasMenu ? 0 : toggle.height / 2
+            leftRadius: toggle.cornerRadius
+            rightRadius: toggle.hasMenu ? 0 : toggle.cornerRadius
 
             leftPadding: Kirigami.Units.largeSpacing
             rightPadding: toggle.hasMenu ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
@@ -202,7 +207,7 @@ Item {
             Layout.fillHeight: true
             Layout.preferredWidth: toggle.height
             leftRadius: 0
-            rightRadius: toggle.height / 2
+            rightRadius: toggle.cornerRadius
 
             Accessible.role: Accessible.Button
             Accessible.name: toggle.menuLabel

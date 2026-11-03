@@ -8,6 +8,11 @@ import org.kde.plasma.configuration
 // Pages of the widget settings dialog.
 ConfigModel {
     ConfigCategory {
+        name: i18n("Appearance")
+        icon: "preferences-desktop-theme-global"
+        source: "ConfigAppearance.qml"
+    }
+    ConfigCategory {
         name: i18n("System Tray")
         icon: "preferences-desktop-notification-symbolic"
         source: "ConfigTray.qml"
