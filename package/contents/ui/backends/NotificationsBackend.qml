@@ -79,6 +79,22 @@ Item {
         model.close(index(model, row));
     }
 
+    // Running jobs cannot be closed (Plasma keeps them until they end), so the X only hides them:
+    // their ids are remembered here and the list/bubbles skip them while they are still running.
+    property var dismissedJobs: ({})
+
+    function dismissJob(id) {
+        const copy = Object.assign({}, dismissedJobs);
+        copy[id] = true;
+        dismissedJobs = copy;
+    }
+
+    function isJobActive(item) {
+        return item.type === NotificationManager.Notifications.JobType
+            && (item.jobState === NotificationManager.Notifications.JobStateRunning
+                || item.jobState === NotificationManager.Notifications.JobStateSuspended);
+    }
+
     // Jobs (file copies from Dolphin, downloads…).
     function suspendJob(model, row) {
         model.suspendJob(index(model, row));

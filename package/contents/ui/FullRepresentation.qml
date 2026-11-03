@@ -81,9 +81,28 @@ PlasmaExtras.Representation {
         }
     }
 
+    // The popup window itself is never resized frame by frame (that flickers): it jumps to the
+    // larger size at once when growing, and shrinks only after the content has animated down.
+    property real windowHeight: targetHeight
+
+    onTargetHeightChanged: {
+        if (targetHeight > windowHeight || !plasmoidItem.expanded) {
+            windowHeight = targetHeight;
+            shrinkTimer.stop();
+        } else {
+            shrinkTimer.restart();
+        }
+    }
+
+    Timer {
+        id: shrinkTimer
+        interval: Kirigami.Units.longDuration + 60
+        onTriggered: full.windowHeight = full.targetHeight
+    }
+
     Layout.minimumWidth: Kirigami.Units.gridUnit * 20
     Layout.preferredWidth: Kirigami.Units.gridUnit * 22
-    Layout.minimumHeight: animatedHeight + Kirigami.Units.largeSpacing * 2
+    Layout.minimumHeight: windowHeight + Kirigami.Units.largeSpacing * 2
     Layout.preferredHeight: Layout.minimumHeight
     Layout.maximumHeight: Layout.minimumHeight
     collapseMarginsHint: true
@@ -130,8 +149,14 @@ PlasmaExtras.Representation {
 
     QQC2.StackView {
         id: stack
-        anchors.fill: parent
-        anchors.margins: Kirigami.Units.largeSpacing
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            margins: Kirigami.Units.largeSpacing
+        }
+        // Follows the animation; the window around it is already at its final (or old, larger) size.
+        height: full.animatedHeight
         clip: true
         initialItem: mainPage
 
@@ -463,6 +488,7 @@ PlasmaExtras.Representation {
             }
 
             NotificationList {
+                id: notificationList
                 Layout.fillWidth: true
                 showSeparator: false
                 visible: full.notifications !== null

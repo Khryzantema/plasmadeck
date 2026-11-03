@@ -124,7 +124,6 @@ Rectangle {
             }
 
             PlasmaComponents3.ToolButton {
-                visible: !card.jobActive && card.notification.closable !== false
                 icon.name: "window-close-symbolic"
                 text: i18n("Close")
                 display: PlasmaComponents3.AbstractButton.IconOnly

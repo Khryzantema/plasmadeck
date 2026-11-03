@@ -17,17 +17,20 @@ Item {
     // The panel item, used to pick the left or right corner.
     property Item visualParent
 
-    // Room to leave for the open PlasmaDeck popup: the bubbles slide away from the panel by this
-    // much while it is open, and back when it closes.
-    property real avoid: 0
-    property real shift: avoid
-    Behavior on shift {
-        NumberAnimation {
-            duration: Kirigami.Units.longDuration
-            easing.type: Easing.OutCubic
+    // True while the PlasmaDeck popup is open.
+    property bool hidden: false
+
+    // Opening the popup dismisses the bubbles for good: they stay in the notification list.
+    onHiddenChanged: {
+        if (hidden) {
+            for (let i = backend.popups.rowCount() - 1; i >= 0; i--) {
+                backend.expire(backend.popups, i);
+            }
         }
     }
-    onShiftChanged: relayout()
+
+    // Every bubble stays on screen for this long (ms), whatever the notification asks for.
+    readonly property int bubbleTimeout: 5000
 
     readonly property int popupWidth: Kirigami.Units.gridUnit * 20
     readonly property int spacing: Kirigami.Units.largeSpacing
@@ -66,7 +69,7 @@ Item {
         if (screenRect.width <= 0) {
             return;
         }
-        let y = atTop ? screenRect.y + edgeDistance + shift : screenRect.y + screenRect.height - edgeDistance - shift;
+        let y = atTop ? screenRect.y + edgeDistance : screenRect.y + screenRect.height - edgeDistance;
         for (let i = 0; i < bubbles.count; i++) {
             const dialog = bubbleAt(i);
             if (!dialog) {
@@ -98,22 +101,21 @@ Item {
             required property int index
 
             readonly property bool critical: model.urgency === NotificationManager.Notifications.CriticalUrgency
-            // Milliseconds; 0 = stays until closed. Critical notifications never time out.
-            // File operations hide from the screen after a while and go on in the popup's notification list.
-            readonly property int timeout: critical ? 0 : card.isJob ? 7000 : (model.timeout > 0 ? model.timeout : popups.backend.settings.popupTimeout)
+            readonly property int timeout: popups.bubbleTimeout
 
             type: critical ? PlasmaCore.Dialog.CriticalNotification : PlasmaCore.Dialog.Notification
             flags: Qt.WindowDoesNotAcceptFocus
             location: PlasmaCore.Types.Floating
             hideOnWindowDeactivate: false
-            visible: false
+            property bool shown: false
+            visible: shown && !popups.hidden
 
             onWidthChanged: popups.relayout()
             onHeightChanged: popups.relayout()
 
             Component.onCompleted: {
                 popups.relayout();
-                visible = true;
+                shown = true;
                 popups.backend.popups.playSoundHint(popups.backend.index(popups.backend.popups, index));
             }
 
@@ -124,7 +126,14 @@ Item {
                 color: "transparent"
                 onDefaultActionInvoked: popups.backend.invokeDefault(popups.backend.popups, dialog.index)
                 onActionInvoked: actionId => popups.backend.invokeAction(popups.backend.popups, dialog.index, actionId)
-                onCloseClicked: popups.backend.close(popups.backend.popups, dialog.index)
+                onCloseClicked: {
+                    // A running job cannot be closed: just take its bubble off the screen.
+                    if (popups.backend.isJobActive(dialog.model)) {
+                        popups.backend.expire(popups.backend.popups, dialog.index);
+                    } else {
+                        popups.backend.close(popups.backend.popups, dialog.index);
+                    }
+                }
                 onSuspendClicked: popups.backend.suspendJob(popups.backend.popups, dialog.index)
                 onResumeClicked: popups.backend.resumeJob(popups.backend.popups, dialog.index)
                 onKillClicked: popups.backend.killJob(popups.backend.popups, dialog.index)
