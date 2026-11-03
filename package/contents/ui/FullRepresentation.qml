@@ -45,6 +45,7 @@ PlasmaExtras.Representation {
 
     function openPage(page) {
         openMenu = "";
+        animateNextResize();
         pageOpener = Window.activeFocusItem;
         stack.push(page === "network" ? networkPage : page === "power" ? powerPage : bluetoothPage);
         stack.currentItem.forceActiveFocus(Qt.TabFocusReason);
@@ -52,6 +53,7 @@ PlasmaExtras.Representation {
 
     function closePage() {
         if (stack.depth > 1) {
+            animateNextResize();
             stack.pop();
             // Give focus back to the arrow that opened the page.
             (pageOpener ?? mainPage.nextItemInFocusChain()).forceActiveFocus(Qt.TabFocusReason);
@@ -65,44 +67,61 @@ PlasmaExtras.Representation {
         mainPage.nextItemInFocusChain(true).forceActiveFocus(Qt.OtherFocusReason);
     }
 
-    // The popup keeps the main page's height while menus are open (resizing the popup window makes
-    // Plasma move it, which can flicker on Wayland). The Wi-Fi and power pages are copies of
-    // Plasma's own applets and bring their default sizes: the popup grows or shrinks to fit them,
-    // with an animation.
+    // The popup keeps the main page's height while menus are open. The Wi-Fi and power pages are
+    // copies of Plasma's own applets and bring their default sizes: the popup window itself grows
+    // or shrinks to fit them, with an animation.
     readonly property real pageHeight: content.implicitHeight
     readonly property real targetHeight: stack.currentItem?.pagePreferredHeight ?? pageHeight
     property real animatedHeight: targetHeight
 
+    // The window only animates its size when a page opens or closes. Other changes (the list of
+    // notifications growing or being cleared) resize it at once: a window resized frame by frame
+    // makes the popup shake, which is fine as a one-off transition but not for everyday changes.
+    property bool animateResize: false
+
+    Timer {
+        id: animateResizeTimer
+        interval: Kirigami.Units.longDuration + 150
+        onTriggered: full.animateResize = false
+    }
+
+    function animateNextResize() {
+        animateResize = true;
+        animateResizeTimer.restart();
+    }
+
     Behavior on animatedHeight {
-        enabled: full.plasmoidItem.expanded
+        enabled: full.plasmoidItem.expanded && full.animateResize
         NumberAnimation {
             duration: Kirigami.Units.longDuration
             easing.type: Easing.OutCubic
         }
     }
 
-    // The popup window itself is never resized frame by frame (that flickers): it jumps to the
-    // larger size at once when growing, and shrinks only after the content has animated down.
-    property real windowHeight: targetHeight
+    // The content does not follow the window while it animates (that makes buttons and sliders
+    // tremble up and down): it is laid out once at the larger of the old and new sizes, stays
+    // there, and the window just grows over it or shrinks around it. After the animation it takes
+    // the final size (nothing moves, as the content hangs from the top).
+    property real stackHeight: targetHeight
 
     onTargetHeightChanged: {
-        if (targetHeight > windowHeight || !plasmoidItem.expanded) {
-            windowHeight = targetHeight;
-            shrinkTimer.stop();
+        if (targetHeight > stackHeight || !plasmoidItem.expanded) {
+            stackHeight = targetHeight;
+            settleTimer.stop();
         } else {
-            shrinkTimer.restart();
+            settleTimer.restart();
         }
     }
 
     Timer {
-        id: shrinkTimer
+        id: settleTimer
         interval: Kirigami.Units.longDuration + 60
-        onTriggered: full.windowHeight = full.targetHeight
+        onTriggered: full.stackHeight = full.targetHeight
     }
 
     Layout.minimumWidth: Kirigami.Units.gridUnit * 20
     Layout.preferredWidth: Kirigami.Units.gridUnit * 22
-    Layout.minimumHeight: windowHeight + Kirigami.Units.largeSpacing * 2
+    Layout.minimumHeight: animatedHeight + Kirigami.Units.largeSpacing * 2
     Layout.preferredHeight: Layout.minimumHeight
     Layout.maximumHeight: Layout.minimumHeight
     collapseMarginsHint: true
@@ -155,8 +174,8 @@ PlasmaExtras.Representation {
             right: parent.right
             margins: Kirigami.Units.largeSpacing
         }
-        // Follows the animation; the window around it is already at its final (or old, larger) size.
-        height: full.animatedHeight
+        // Independent of the window's animated height (see stackHeight above).
+        height: full.stackHeight
         clip: true
         initialItem: mainPage
 

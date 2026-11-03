@@ -4,7 +4,6 @@
 
 import QtQuick
 import org.kde.kirigami as Kirigami
-import org.kde.notificationmanager as NotificationManager
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 
@@ -100,24 +99,28 @@ Item {
             required property var model
             required property int index
 
-            readonly property bool critical: model.urgency === NotificationManager.Notifications.CriticalUrgency
             readonly property int timeout: popups.bubbleTimeout
 
-            type: critical ? PlasmaCore.Dialog.CriticalNotification : PlasmaCore.Dialog.Notification
+            type: PlasmaCore.Dialog.Tooltip
             flags: Qt.WindowDoesNotAcceptFocus
             location: PlasmaCore.Types.Floating
             hideOnWindowDeactivate: false
-            property bool shown: false
-            visible: shown && !popups.hidden
+            visible: false
 
             onWidthChanged: popups.relayout()
             onHeightChanged: popups.relayout()
 
             Component.onCompleted: {
                 popups.relayout();
-                shown = true;
+                // Shown by assignment (not a binding): a bound visible makes the window appear
+                // without ever being drawn. Nothing new pops up while the PlasmaDeck popup is open.
+                visible = !popups.hidden;
                 popups.backend.popups.playSoundHint(popups.backend.index(popups.backend.popups, index));
             }
+
+            // Follows the PlasmaDeck popup: a bubble open at that moment is taken off the screen.
+            readonly property bool suppressed: popups.hidden
+            onSuppressedChanged: if (suppressed) visible = false
 
             mainItem: NotificationCard {
                 id: card

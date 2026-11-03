@@ -50,28 +50,6 @@ Item {
         serviceUp: nmWatcher.registered
     }
 
-    // Connection types, for the sections of the network page.
-    readonly property int typeWired: PlasmaNM.Enums.Wired
-    readonly property int typeWireless: PlasmaNM.Enums.Wireless
-
-    // Everything the network page lists: wired connections first, then Wi-Fi
-    // networks (when Wi-Fi is on). Inside each group the order stays the one of
-    // the native applet (active first, then known, then by signal), because the
-    // sort by type is stable.
-    readonly property KItemModels.KSortFilterProxyModel networks: KItemModels.KSortFilterProxyModel {
-        sourceModel: appletProxyModel
-        sortRoleName: "Type"
-        sortOrder: Qt.AscendingOrder
-        filterRowCallback: (sourceRow, sourceParent) => {
-            const type = sourceModel.data(sourceModel.index(sourceRow, 0, sourceParent), KItemModels.KRoleNames.role("Type"));
-            return type === PlasmaNM.Enums.Wired
-                || (type === PlasmaNM.Enums.Wireless && root.wifiAvailable && root.wifiEnabled);
-        }
-    }
-
-    onWifiEnabledChanged: networks.invalidateFilter()
-    onWifiAvailableChanged: networks.invalidateFilter()
-
     // --- Actions ---
 
     function setWifiEnabled(enable) {
@@ -100,30 +78,7 @@ Item {
         PlasmaNM.Configuration.airplaneModeEnabled = enable;
     }
 
-    function requestScan() {
-        handler.requestScan();
-    }
-
-    // --- Helpers for list entries (model roles of plasma-nm's NetworkModel) ---
-
-    function isWired(network) {
-        return network.Type === PlasmaNM.Enums.Wired;
-    }
-
-    function isSecured(securityType) {
-        // OWE ("Enhanced Open") is encrypted but needs no password.
-        return securityType !== PlasmaNM.Enums.NoneSecurity && securityType !== PlasmaNM.Enums.UnknownSecurity
-            && securityType !== PlasmaNM.Enums.OWE;
-    }
-
-    // Same decision tree as the native ConnectionItem. Returns true when a password is needed first.
-    function needsPassword(network) {
-        return !network.Uuid && isSecured(network.SecurityType) && network.ConnectionState === PlasmaNM.Enums.Deactivated;
-    }
-
-    function isConnecting(network) {
-        return network.ConnectionState === PlasmaNM.Enums.Activating;
-    }
+    // --- Helpers (model roles of plasma-nm's NetworkModel) ---
 
     function isActive(network) {
         return network.ConnectionState === PlasmaNM.Enums.Activated || network.ConnectionState === PlasmaNM.Enums.Activating;
@@ -178,11 +133,6 @@ Item {
 
     PlasmaNM.NetworkModel {
         id: networkModel
-    }
-
-    PlasmaNM.AppletProxyModel {
-        id: appletProxyModel
-        sourceModel: networkModel
     }
 
     DBus.DBusServiceWatcher {
