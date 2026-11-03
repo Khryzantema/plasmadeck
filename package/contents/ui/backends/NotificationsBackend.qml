@@ -35,11 +35,22 @@ Item {
         return unreadCount > 0 ? String(Qt.resolvedUrl("../../icons/notification-unread-symbolic.svg")) : "notification-inactive-symbolic";
     }
 
+    // File operations in progress (Dolphin copies, downloads…).
+    readonly property int activeJobs: historyModel.activeJobsCount
+    readonly property string jobsIcon: activeJobs > 0 ? "folder-sync-symbolic" : ""
+
     readonly property string statusText: {
         if (!serverRunning) {
             return i18n("Notification service not available");
         }
-        return unreadCount > 0 ? i18np("%1 unread notification", "%1 unread notifications", unreadCount) : "";
+        const parts = [];
+        if (activeJobs > 0) {
+            parts.push(i18np("%1 task in progress", "%1 tasks in progress", activeJobs));
+        }
+        if (unreadCount > 0) {
+            parts.push(i18np("%1 unread notification", "%1 unread notifications", unreadCount));
+        }
+        return parts.join("\n");
     }
 
     // Everything up to now counts as seen.
@@ -68,6 +79,19 @@ Item {
         model.close(index(model, row));
     }
 
+    // Jobs (file copies from Dolphin, downloads…).
+    function suspendJob(model, row) {
+        model.suspendJob(index(model, row));
+    }
+
+    function resumeJob(model, row) {
+        model.resumeJob(index(model, row));
+    }
+
+    function killJob(model, row) {
+        model.killJob(index(model, row));
+    }
+
     function expire(model, row) {
         model.expire(index(model, row));
     }
@@ -91,7 +115,7 @@ Item {
         id: historyModel
         showExpired: true
         showDismissed: true
-        showJobs: false
+        showJobs: true
         sortMode: NotificationManager.Notifications.SortByDate
         groupMode: NotificationManager.Notifications.GroupDisabled
         ignoreBlacklistDuringInhibition: true
@@ -108,7 +132,7 @@ Item {
         showExpired: false
         showDismissed: false
         showAddedDuringInhibition: false
-        showJobs: false
+        showJobs: true
         blacklistedDesktopEntries: notificationSettings.popupBlacklistedApplications
         blacklistedNotifyRcNames: notificationSettings.popupBlacklistedServices
         whitelistedDesktopEntries: root.inhibited ? notificationSettings.doNotDisturbPopupWhitelistedApplications : []

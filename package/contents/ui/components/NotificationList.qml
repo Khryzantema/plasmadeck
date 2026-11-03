@@ -63,6 +63,9 @@ ColumnLayout {
                 onDefaultActionInvoked: section.backend.invokeDefault(section.backend.history, index)
                 onActionInvoked: actionId => section.backend.invokeAction(section.backend.history, index, actionId)
                 onCloseClicked: section.backend.close(section.backend.history, index)
+                onSuspendClicked: section.backend.suspendJob(section.backend.history, index)
+                onResumeClicked: section.backend.resumeJob(section.backend.history, index)
+                onKillClicked: section.backend.killJob(section.backend.history, index)
             }
 
             PlasmaExtras.PlaceholderMessage {

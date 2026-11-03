@@ -15,4 +15,11 @@
             <default></default>
         </entry>
     </group>
+
+    <group name="General">
+        <entry name="currentDetailsTab" type="String">
+            <label>Tab shown when a network connection is expanded (speed or details)</label>
+            <default>speed</default>
+        </entry>
+    </group>
 </kcfg>

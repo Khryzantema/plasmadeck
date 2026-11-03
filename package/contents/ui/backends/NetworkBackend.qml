@@ -15,6 +15,9 @@ Item {
     id: root
     visible: false
 
+    // Shared with the network page, so opening it does not have to build a model.
+    readonly property var connectionModel: networkModel
+
     // --- Overall state (panel icon, tooltip) ---
     readonly property string panelIcon: connectionIcon.connectionIcon ? connectionIcon.connectionIcon + "-symbolic" : ""
     readonly property string statusText: networkStatus.activeConnections

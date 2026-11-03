@@ -17,6 +17,18 @@ Item {
     // The panel item, used to pick the left or right corner.
     property Item visualParent
 
+    // Room to leave for the open PlasmaDeck popup: the bubbles slide away from the panel by this
+    // much while it is open, and back when it closes.
+    property real avoid: 0
+    property real shift: avoid
+    Behavior on shift {
+        NumberAnimation {
+            duration: Kirigami.Units.longDuration
+            easing.type: Easing.OutCubic
+        }
+    }
+    onShiftChanged: relayout()
+
     readonly property int popupWidth: Kirigami.Units.gridUnit * 20
     readonly property int spacing: Kirigami.Units.largeSpacing
     readonly property int edgeDistance: Kirigami.Units.largeSpacing
@@ -54,7 +66,7 @@ Item {
         if (screenRect.width <= 0) {
             return;
         }
-        let y = atTop ? screenRect.y + edgeDistance : screenRect.y + screenRect.height - edgeDistance;
+        let y = atTop ? screenRect.y + edgeDistance + shift : screenRect.y + screenRect.height - edgeDistance - shift;
         for (let i = 0; i < bubbles.count; i++) {
             const dialog = bubbleAt(i);
             if (!dialog) {
@@ -87,7 +99,8 @@ Item {
 
             readonly property bool critical: model.urgency === NotificationManager.Notifications.CriticalUrgency
             // Milliseconds; 0 = stays until closed. Critical notifications never time out.
-            readonly property int timeout: critical ? 0 : (model.timeout > 0 ? model.timeout : popups.backend.settings.popupTimeout)
+            // File operations hide from the screen after a while and go on in the popup's notification list.
+            readonly property int timeout: critical ? 0 : card.isJob ? 7000 : (model.timeout > 0 ? model.timeout : popups.backend.settings.popupTimeout)
 
             type: critical ? PlasmaCore.Dialog.CriticalNotification : PlasmaCore.Dialog.Notification
             flags: Qt.WindowDoesNotAcceptFocus
@@ -112,6 +125,9 @@ Item {
                 onDefaultActionInvoked: popups.backend.invokeDefault(popups.backend.popups, dialog.index)
                 onActionInvoked: actionId => popups.backend.invokeAction(popups.backend.popups, dialog.index, actionId)
                 onCloseClicked: popups.backend.close(popups.backend.popups, dialog.index)
+                onSuspendClicked: popups.backend.suspendJob(popups.backend.popups, dialog.index)
+                onResumeClicked: popups.backend.resumeJob(popups.backend.popups, dialog.index)
+                onKillClicked: popups.backend.killJob(popups.backend.popups, dialog.index)
 
                 // Paused while the pointer is over the bubble.
                 Timer {

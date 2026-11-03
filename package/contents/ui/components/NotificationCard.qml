@@ -22,8 +22,16 @@ Rectangle {
     signal defaultActionInvoked()
     signal actionInvoked(string actionId)
     signal closeClicked()
+    signal suspendClicked()
+    signal resumeClicked()
+    signal killClicked()
 
     readonly property bool hovered: hover.hovered
+    // File operations (Dolphin copy/move, downloads…) arrive as jobs with progress.
+    readonly property bool isJob: notification.type === NotificationManager.Notifications.JobType
+    readonly property bool jobRunning: isJob && notification.jobState === NotificationManager.Notifications.JobStateRunning
+    readonly property bool jobSuspended: isJob && notification.jobState === NotificationManager.Notifications.JobStateSuspended
+    readonly property bool jobActive: jobRunning || jobSuspended
     readonly property bool critical: notification.urgency === NotificationManager.Notifications.CriticalUrgency
 
     implicitHeight: layout.implicitHeight + Kirigami.Units.largeSpacing * 2
@@ -81,6 +89,7 @@ Rectangle {
             }
 
             PlasmaComponents3.Label {
+                visible: !card.jobActive
                 text: card.notification.created
                     ? KCoreAddons.Format.formatRelativeDateTime(card.notification.updated || card.notification.created, Locale.ShortFormat)
                     : ""
@@ -89,7 +98,33 @@ Rectangle {
             }
 
             PlasmaComponents3.ToolButton {
-                visible: card.notification.closable !== false
+                visible: card.jobActive && card.notification.suspendable === true
+                icon.name: card.jobSuspended ? "media-playback-start-symbolic" : "media-playback-pause-symbolic"
+                text: card.jobSuspended ? i18n("Resume") : i18n("Pause")
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium + Kirigami.Units.smallSpacing
+                Layout.preferredHeight: Layout.preferredWidth
+                onClicked: card.jobSuspended ? card.resumeClicked() : card.suspendClicked()
+                PlasmaComponents3.ToolTip.text: text
+                PlasmaComponents3.ToolTip.visible: hovered
+                PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+            }
+
+            PlasmaComponents3.ToolButton {
+                visible: card.jobActive && card.notification.killable === true
+                icon.name: "media-playback-stop-symbolic"
+                text: i18n("Cancel")
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium + Kirigami.Units.smallSpacing
+                Layout.preferredHeight: Layout.preferredWidth
+                onClicked: card.killClicked()
+                PlasmaComponents3.ToolTip.text: text
+                PlasmaComponents3.ToolTip.visible: hovered
+                PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+            }
+
+            PlasmaComponents3.ToolButton {
+                visible: !card.jobActive && card.notification.closable !== false
                 icon.name: "window-close-symbolic"
                 text: i18n("Close")
                 display: PlasmaComponents3.AbstractButton.IconOnly
@@ -140,6 +175,55 @@ Rectangle {
                 Layout.alignment: Qt.AlignTop
                 Layout.preferredWidth: Kirigami.Units.iconSizes.large
                 Layout.preferredHeight: Kirigami.Units.iconSizes.large
+            }
+        }
+
+        // Job progress: bar, percentage and "x of y · speed".
+        RowLayout {
+            Layout.fillWidth: true
+            visible: card.jobActive
+            spacing: Kirigami.Units.smallSpacing
+
+            PlasmaComponents3.ProgressBar {
+                Layout.fillWidth: true
+                from: 0
+                to: 100
+                value: Math.max(0, card.notification.percentage ?? 0)
+                indeterminate: card.jobRunning && (card.notification.percentage ?? -1) < 0
+            }
+
+            PlasmaComponents3.Label {
+                visible: (card.notification.percentage ?? -1) >= 0
+                text: i18nc("Job progress", "%1%", card.notification.percentage)
+                font: Kirigami.Theme.smallFont
+            }
+        }
+
+        PlasmaComponents3.Label {
+            Layout.fillWidth: true
+            readonly property var details: card.notification.jobDetails
+            visible: card.jobActive && text.length > 0
+            font: Kirigami.Theme.smallFont
+            opacity: 0.7
+            elide: Text.ElideRight
+            textFormat: Text.PlainText
+            text: {
+                if (card.jobSuspended) {
+                    return i18n("Paused");
+                }
+                if (!details) {
+                    return "";
+                }
+                const parts = [];
+                if (details.totalBytes > 0) {
+                    parts.push(i18nc("Bytes processed of total", "%1 of %2",
+                        KCoreAddons.Format.formatByteSize(details.processedBytes),
+                        KCoreAddons.Format.formatByteSize(details.totalBytes)));
+                }
+                if (details.speed > 0) {
+                    parts.push(i18nc("Transfer speed", "%1/s", KCoreAddons.Format.formatByteSize(details.speed)));
+                }
+                return parts.join(" · ");
             }
         }
 

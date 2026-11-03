@@ -4,169 +4,143 @@
 
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
-import org.kde.plasma.extras as PlasmaExtras
+import org.kde.plasma.networkmanagement as PlasmaNM
 
-import "components"
+import "native"
 
-// Network sub-page: Ethernet connections and Wi-Fi networks in sections
-// (connect, disconnect, inline password for new protected Wi-Fi networks),
-// the Wi-Fi switch when there is Wi-Fi, and a link to the settings.
-SubPage {
+// Network sub-page: a copy of Plasma's own Networks applet popup (toolbar with the Wi-Fi, mobile
+// data, airplane mode and hotspot switches and a search field, then the connection list with
+// expandable items, speed/details tabs and inline password entry). The files in "native/" come from
+// plasma-nm's applet; the ids below (handler, mainWindow, ...) are the ones those files expect.
+FocusScope {
     id: page
 
-    required property Item network
+    // The network backend; its connection model is shared so the page opens without building one.
+    property Item network: null
 
-    title: i18n("Network")
-    iconName: network.wifiAvailable ? "network-wireless-symbolic" : "network-wired-symbolic"
-    showSwitch: network.wifiAvailable
-    switchLabel: i18n("Wi-Fi")
-    checked: network.wifiEnabled
-    // Wired connections stay listed while Wi-Fi is off.
-    listVisible: true
-    settingsModule: "kcm_networkmanagement"
-    settingsLabel: i18n("All Networks Settings…")
-    placeholderText: i18n("No networks found")
-    model: network.networks
+    signal back()
 
-    sectionProperty: "Type"
-    sectionDelegate: Kirigami.Heading {
-        required property string section
-        width: ListView.view ? ListView.view.width : implicitWidth
-        topPadding: Kirigami.Units.smallSpacing
-        level: 5
-        opacity: 0.8
-        text: Number(section) === page.network.typeWired ? i18n("Ethernet") : i18n("Wi-Fi")
+    // Read by ConnectionItem to refresh the traffic statistics.
+    readonly property PlasmaNM.NetworkModel connectionModel: network?.connectionModel ?? null
+
+    // Stands in for the applet's root item (PlasmoidItem) in the native files.
+    QtObject {
+        id: mainWindow
+        property bool expanded: page.visible
+        readonly property string kcm: "kcm_networkmanagement"
+        readonly property bool kcmAuthorized: true
     }
 
-    onToggled: checked => network.setWifiEnabled(checked)
+    PlasmaNM.Handler {
+        id: handler
+    }
 
-    // Keep the list fresh while the page is open, like the native applet.
+    PlasmaNM.NetworkStatus {
+        id: networkStatus
+    }
+
+    PlasmaNM.AvailableDevices {
+        id: availableDevices
+    }
+
+    PlasmaNM.AppletProxyModel {
+        id: appletProxyModel
+        sourceModel: page.connectionModel
+    }
+
+    // The first scan waits for the slide-in animation to end: it rewrites the model while the
+    // page is still moving, which makes the opening stutter.
     Timer {
-        interval: 10000
-        repeat: true
-        triggeredOnStart: true
-        running: page.visible && page.network.wifiAvailable && page.checked
-        onTriggered: page.network.requestScan()
+        running: page.visible
+        interval: Kirigami.Units.longDuration + 50
+        onTriggered: handler.requestScan()
     }
 
-    delegate: ColumnLayout {
-        id: row
+    Timer {
+        interval: 10200
+        repeat: true
+        running: page.visible && !PlasmaNM.Configuration.airplaneModeEnabled && !(page.connectionModel?.delayModelUpdates ?? false)
+        onTriggered: handler.requestScan()
+    }
 
-        required property var model
-        required property int index
-
-        readonly property bool active: page.network.isActive(model)
-        readonly property bool connecting: page.network.isConnecting(model)
-        readonly property bool wired: page.network.isWired(model)
-        property bool askingPassword: false
-
-        width: ListView.view.width
-        spacing: Kirigami.Units.smallSpacing
-
-        PlasmaComponents3.ItemDelegate {
-            id: item
-            Layout.fillWidth: true
-            highlighted: activeFocus || row.ListView.isCurrentItem && row.ListView.view.activeFocus
-
-            Accessible.name: row.model.ItemUniqueName
-            Accessible.description: status.text
-
-            onClicked: {
-                if (page.network.needsPassword(row.model)) {
-                    row.askingPassword = !row.askingPassword;
-                } else {
-                    page.network.toggleNetwork(row.model);
-                }
+    Connections {
+        target: handler
+        function onWifiCodeReceived(data, ssid, password) {
+            if (data.length === 0) {
+                console.error("Cannot create QR code component: Unsupported connection");
+                return;
             }
-            Keys.onReturnPressed: clicked()
-            Keys.onEnterPressed: clicked()
-
-            contentItem: RowLayout {
-                spacing: Kirigami.Units.smallSpacing
-
-                Kirigami.Icon {
-                    source: row.wired ? (row.active ? "network-wired-activated-symbolic" : "network-wired-symbolic") : row.model.ConnectionIcon
-                    Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
-                    Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
-                }
-
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    spacing: 0
-
-                    PlasmaComponents3.Label {
-                        Layout.fillWidth: true
-                        text: row.model.ItemUniqueName
-                        elide: Text.ElideRight
-                        textFormat: Text.PlainText
-                        font.weight: row.active ? Font.DemiBold : Font.Normal
-                    }
-                    PlasmaComponents3.Label {
-                        id: status
-                        Layout.fillWidth: true
-                        visible: text.length > 0
-                        font: Kirigami.Theme.smallFont
-                        opacity: 0.7
-                        elide: Text.ElideRight
-                        text: {
-                            if (row.connecting) {
-                                return i18n("Connecting…");
-                            }
-                            if (row.active) {
-                                return i18n("Connected");
-                            }
-                            return row.model.Uuid && !row.wired ? i18n("Saved") : "";
-                        }
-                    }
-                }
-
-                PlasmaComponents3.BusyIndicator {
-                    visible: row.connecting
-                    running: visible
-                    Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                    Layout.preferredHeight: Kirigami.Units.iconSizes.small
-                }
-
-                Kirigami.Icon {
-                    visible: row.active && !row.connecting
-                    source: "object-select-symbolic"
-                    Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                    Layout.preferredHeight: Kirigami.Units.iconSizes.small
-                }
-            }
+            stack.push(qrCodePage, { content: data, ssid: ssid, password: password });
         }
+    }
+
+    Component {
+        id: qrCodePage
+        ShareNetworkQrCodePage {}
+    }
+
+    Keys.onEscapePressed: {
+        if (stack.depth > 1) {
+            stack.pop();
+        } else {
+            page.back();
+        }
+    }
+    Keys.onPressed: event => {
+        if (event.modifiers & Qt.ControlModifier && event.key === Qt.Key_F) {
+            toolbar.searchTextField.forceActiveFocus();
+            toolbar.searchTextField.selectAll();
+            event.accepted = true;
+        }
+    }
+
+    ColumnLayout {
+        anchors.fill: parent
+        spacing: Kirigami.Units.smallSpacing
 
         RowLayout {
             Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.largeSpacing
-            Layout.rightMargin: Kirigami.Units.smallSpacing
-            visible: row.askingPassword
+            spacing: Kirigami.Units.smallSpacing
 
-            PlasmaExtras.PasswordField {
-                id: passwordField
-                Layout.fillWidth: true
-                placeholderText: i18n("Password")
-                Accessible.name: i18n("Password for %1", row.model.ItemUniqueName)
-                onVisibleChanged: if (visible) forceActiveFocus()
-                onAccepted: connectButton.clicked()
-                Keys.onEscapePressed: event => {
-                    row.askingPassword = false;
-                    item.forceActiveFocus();
-                    event.accepted = true;
-                }
+            PlasmaComponents3.ToolButton {
+                id: backButton
+                focus: true
+                icon.name: page.LayoutMirroring.enabled ? "go-next-symbolic" : "go-previous-symbolic"
+                text: i18n("Back")
+                display: PlasmaComponents3.AbstractButton.IconOnly
+                Accessible.name: text
+                onClicked: stack.depth > 1 ? stack.pop() : page.back()
+                PlasmaComponents3.ToolTip.text: text
+                PlasmaComponents3.ToolTip.visible: hovered
+                PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
             }
 
-            PlasmaComponents3.Button {
-                id: connectButton
-                text: i18n("Connect")
-                enabled: passwordField.text.length > 0
-                onClicked: {
-                    page.network.toggleNetwork(row.model, passwordField.text);
-                    passwordField.clear();
-                    row.askingPassword = false;
-                }
+            Toolbar {
+                id: toolbar
+                Layout.fillWidth: true
+                hasConnections: connectionListPage.count > 0
+                visible: stack.depth === 1
+            }
+
+            Item {
+                Layout.fillWidth: true
+                visible: stack.depth > 1
+            }
+        }
+
+        QQC2.StackView {
+            id: stack
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            clip: true
+
+            initialItem: ConnectionListPage {
+                id: connectionListPage
+                model: appletProxyModel
+                nmStatus: networkStatus
             }
         }
     }

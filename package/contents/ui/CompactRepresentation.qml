@@ -25,6 +25,7 @@ Item {
 
     readonly property var icons: [
         { kind: "notifications", name: plasmoidItem.notifications?.panelIcon ?? "" },
+        { kind: "jobs", name: plasmoidItem.notifications?.jobsIcon ?? "" },
         { kind: "network", name: plasmoidItem.network?.panelIcon ?? "" },
         { kind: "brightness", name: plasmoidItem.brightness?.panelIcon ?? "" },
         { kind: "audio", name: plasmoidItem.audio?.panelIcon ?? "" },

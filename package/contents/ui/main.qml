@@ -96,6 +96,8 @@ PlasmoidItem {
         sourceComponent: NotificationPopups {
             backend: root.notifications
             visualParent: root.compactRepresentationItem
+            // Slide the bubbles down (or up, with a bottom panel) out of the open popup's way.
+            avoid: root.expanded ? (root.fullRepresentationItem?.height ?? 0) + Kirigami.Units.largeSpacing : 0
         }
     }
 

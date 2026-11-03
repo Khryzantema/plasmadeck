@@ -35,15 +35,19 @@ DBus services the built-in widgets use.
   device exists).
 - Brightness slider per display (internal backlight or DDC/CI monitors).
 - Network toggle: Wi-Fi on machines that have it, Ethernet otherwise
-  (connect/disconnect the wired connection); its page lists the Ethernet
-  connections and the Wi-Fi networks.
+  (connect/disconnect the wired connection); its page is a copy of Plasma's
+  own Networks popup (expandable connections with speed and details, inline
+  password, share by QR code, hotspot, search).
 - Toggles: Bluetooth (with the device list), Power Mode
-  (power-saver / balanced / performance), Airplane Mode, Do Not Disturb,
+  (its page is a copy of Plasma's Power & Battery popup), Airplane Mode, Do Not Disturb,
   Night Light, Dark Style, Battery, Clipboard and Screenshot.
 - Clipboard history (full-width pill above the notifications): the last 15 entries (text, links and image thumbnails);
   picking one puts it back on the clipboard. It keeps Plasma's clipboard
   engine running, so history is recorded even without Plasma's system tray.
-- Notification history with app icon, actions, close and "Clear".
+- Notification history with app icon, actions, close and "Clear". File
+  operations (Dolphin copies, downloads) show progress with pause and cancel;
+  they leave the screen after a few seconds, keep going in the list, and a
+  task icon appears in the panel while they run.
 
 **Notifications**
 - When no other notification server is running (e.g. after removing Plasma's

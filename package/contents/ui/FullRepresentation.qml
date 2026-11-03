@@ -46,7 +46,7 @@ PlasmaExtras.Representation {
     function openPage(page) {
         openMenu = "";
         pageOpener = Window.activeFocusItem;
-        stack.push(page === "network" ? networkPage : bluetoothPage);
+        stack.push(page === "network" ? networkPage : page === "power" ? powerPage : bluetoothPage);
         stack.currentItem.forceActiveFocus(Qt.TabFocusReason);
     }
 
@@ -164,22 +164,6 @@ PlasmaExtras.Representation {
                 onChosen: full.openMenu = ""
             }
         }
-
-        MenuOverlay {
-            anchorItem: powerProfileToggle
-            open: full.openMenu === "power" && (full.powerProfiles?.available ?? false)
-            onDismissed: full.openMenu = ""
-            sourceComponent: ChoiceMenu {
-                title: i18n("Power Mode")
-                iconName: "speedometer-symbolic"
-                choices: full.powerProfiles.profiles.map(profile => ({
-                    text: full.powerProfiles.displayName(profile),
-                    icon: full.powerProfiles.iconName(profile),
-                    checked: profile === full.powerProfiles.activeProfile,
-                }))
-                onChosen: index => full.powerProfiles.setProfile(full.powerProfiles.profiles[index])
-            }
-        }
     }
 
     CommandRunner {
@@ -190,6 +174,13 @@ PlasmaExtras.Representation {
         id: networkPage
         NetworkPage {
             network: full.network
+            onBack: full.closePage()
+        }
+    }
+
+    Component {
+        id: powerPage
+        PowerPage {
             onBack: full.closePage()
         }
     }
@@ -361,7 +352,7 @@ PlasmaExtras.Representation {
                     menuOpen: full.openMenu === "power"
                     menuLabel: i18n("Choose power mode")
                     onToggled: full.powerProfiles.cycle()
-                    onMenuRequested: full.toggleMenu("power")
+                    onMenuRequested: full.openPage("power")
                 }
 
                 QuickToggle {
