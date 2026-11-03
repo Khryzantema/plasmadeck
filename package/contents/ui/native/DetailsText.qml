@@ -37,7 +37,7 @@ MouseArea {
         }
 
         PlasmaExtras.MenuItem {
-            text: i18n("Copy")
+            text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Copy")
             icon: "edit-copy"
             enabled: contextMenu.text !== ""
             onClicked: clipboard.content = contextMenu.text

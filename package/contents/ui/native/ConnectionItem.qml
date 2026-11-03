@@ -59,7 +59,7 @@ PlasmaExtras.ExpandableListItem {
         }
 
         icon.name: isDeactivated ? "network-connect-symbolic" : "network-disconnect-symbolic"
-        text: isDeactivated ? i18n("Connect") : i18n("Disconnect")
+        text: isDeactivated ? i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Connect") : i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Disconnect")
         onTriggered: {
             connectionItem.changeState()
             listView.newIndexSelected(index)
@@ -87,13 +87,13 @@ PlasmaExtras.ExpandableListItem {
     contextualActions: [
         Action {
             enabled: connectionItem.model.Uuid && connectionItem.model.Type === PlasmaNM.Enums.Wireless && connectionItem.passwordIsStatic
-            text: i18nc("Share Wi-Fi network's password or QR code", "Share")
+            text: i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "Share Wi-Fi network's password or QR code", "Share")
             icon.name: "view-barcode-qr"
             onTriggered: handler.requestWifiCode(connectionItem.model.ConnectionPath, connectionItem.model.Ssid, connectionItem.model.SecurityType);
         },
         Action {
             enabled: connectionItem.model.Uuid !== ""
-            text: i18n("Configure…")
+            text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Configure…")
             icon.name: "configure"
             onTriggered: KCMUtils.KCMLauncher.openSystemSettings(mainWindow.kcm, ["--args", "Uuid=" + connectionItem.model.Uuid])
         }
@@ -133,12 +133,12 @@ PlasmaExtras.ExpandableListItem {
 
                 PlasmaComponents3.TabButton {
                     id: speedTabButton
-                    text: i18n("Speed")
+                    text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Speed")
                 }
 
                 PlasmaComponents3.TabButton {
                     id: detailsTabButton
-                    text: i18n("Details")
+                    text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Details")
                 }
 
                 Component.onCompleted: {
@@ -185,7 +185,7 @@ PlasmaExtras.ExpandableListItem {
 
                 activeFocusOnTab: true
 
-                Accessible.description: i18nc("@info:tooltip", "Current download speed is %1 kibibytes per second; current upload speed is %2 kibibytes per second", Math.round(connectionItem.rxSpeed / 1024), Math.round(connectionItem.txSpeed / 1024))
+                Accessible.description: i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Current download speed is %1 kibibytes per second; current upload speed is %2 kibibytes per second", Math.round(connectionItem.rxSpeed / 1024), Math.round(connectionItem.txSpeed / 1024))
 
                 Loader {
                     anchors.fill: parent
@@ -306,7 +306,7 @@ PlasmaExtras.ExpandableListItem {
         } else if (model.Uuid && model.ConnectionState === PlasmaNM.Enums.Deactivated) {
             return model.LastUsed
         } else if (model.ConnectionState === PlasmaNM.Enums.Activated && showSpeed) {
-            return i18nc("Download and upload rates in some unit per second", "↓ %1/s, ↑ %2/s",
+            return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "Download and upload rates in some unit per second", "↓ %1/s, ↑ %2/s",
                 KCoreAddons.Format.formatByteSize(rxSpeed),
                 KCoreAddons.Format.formatByteSize(txSpeed))
         }

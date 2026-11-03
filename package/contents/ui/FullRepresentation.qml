@@ -65,13 +65,25 @@ PlasmaExtras.Representation {
         mainPage.nextItemInFocusChain(true).forceActiveFocus(Qt.OtherFocusReason);
     }
 
-    // The popup keeps the main page's height on every page and while menus are open:
-    // resizing the popup window makes Plasma move it, which flickers on Wayland.
+    // The popup keeps the main page's height while menus are open (resizing the popup window makes
+    // Plasma move it, which can flicker on Wayland). The Wi-Fi and power pages are copies of
+    // Plasma's own applets and bring their default sizes: the popup grows or shrinks to fit them,
+    // with an animation.
     readonly property real pageHeight: content.implicitHeight
+    readonly property real targetHeight: stack.currentItem?.pagePreferredHeight ?? pageHeight
+    property real animatedHeight: targetHeight
+
+    Behavior on animatedHeight {
+        enabled: full.plasmoidItem.expanded
+        NumberAnimation {
+            duration: Kirigami.Units.longDuration
+            easing.type: Easing.OutCubic
+        }
+    }
 
     Layout.minimumWidth: Kirigami.Units.gridUnit * 20
     Layout.preferredWidth: Kirigami.Units.gridUnit * 22
-    Layout.minimumHeight: pageHeight + Kirigami.Units.largeSpacing * 2
+    Layout.minimumHeight: animatedHeight + Kirigami.Units.largeSpacing * 2
     Layout.preferredHeight: Layout.minimumHeight
     Layout.maximumHeight: Layout.minimumHeight
     collapseMarginsHint: true

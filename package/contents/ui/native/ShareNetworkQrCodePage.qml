@@ -30,7 +30,7 @@ ColumnLayout {
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignHCenter
         textFormat: Text.PlainText
-        text: i18n("Scan this QR code with another device to connect to the \"%1\" network.", page.ssid)
+        text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Scan this QR code with another device to connect to the \"%1\" network.", page.ssid)
     }
 
     Prison.Barcode {
@@ -105,7 +105,7 @@ ColumnLayout {
             horizontalAlignment: passwordLayout.state === "inline" ? Text.AlignRight : Text.AlignLeft
             wrapMode: Text.NoWrap
             textFormat: Text.PlainText
-            text: i18n("Wi-Fi password:")
+            text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Wi-Fi password:")
         }
 
         Kirigami.SelectableLabel {

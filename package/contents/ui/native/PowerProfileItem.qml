@@ -37,15 +37,15 @@ PlasmaComponents3.ItemDelegate {
     // inhibitionReason string).
     readonly property var profileData: [
         {
-            label: i18n("Power Save"),
+            label: i18nd("plasma_applet_org.kde.plasma.battery", "Power Save"),
             profile: "power-saver",
             canBeInhibited: false,
         }, {
-            label: i18n("Balanced"),
+            label: i18nd("plasma_applet_org.kde.plasma.battery", "Balanced"),
             profile: "balanced",
             canBeInhibited: false,
         }, {
-            label: i18n("Performance"),
+            label: i18nd("plasma_applet_org.kde.plasma.battery", "Performance"),
             profile: "performance",
             canBeInhibited: true,
         }
@@ -62,7 +62,7 @@ PlasmaComponents3.ItemDelegate {
     background.visible: highlighted
     highlighted: activeFocus
     hoverEnabled: false
-    text: i18n("Power Profile")
+    text: i18nd("plasma_applet_org.kde.plasma.battery", "Power Profile")
 
     Accessible.ignored: true
     Keys.forwardTo: [slider]
@@ -72,7 +72,7 @@ PlasmaComponents3.ItemDelegate {
         componentName: "plasma_workspace"
         eventId: "warning"
         iconName: "speedometer"
-        title: i18n("Power Management")
+        title: i18nd("plasma_applet_org.kde.plasma.battery", "Power Management")
     }
 
     contentItem: GridLayout {
@@ -106,8 +106,8 @@ PlasmaComponents3.ItemDelegate {
             text: (root.profilesAvailable && root.activeProfileData)
                 ? root.activeProfileData.label
                 : root.isTlpInstalled 
-                    ? i18nc("Power profile", "Automatic")
-                    : i18nc("Power profile", "Not available")
+                    ? i18ndc("plasma_applet_org.kde.plasma.battery", "Power profile", "Automatic")
+                    : i18ndc("plasma_applet_org.kde.plasma.battery", "Power profile", "Not available")
             textFormat: Text.PlainText
             enabled: root.profilesAvailable
         }
@@ -147,7 +147,7 @@ PlasmaComponents3.ItemDelegate {
                 target: root
                 function onActiveProfileErrorChanged() {
                     if (root.activeProfileError !== "") {
-                        powerProfileError.text = i18n("Failed to activate %1 mode", root.activeProfileError);
+                        powerProfileError.text = i18nd("plasma_applet_org.kde.plasma.battery", "Failed to activate %1 mode", root.activeProfileError);
                         powerProfileError.sendEvent();
                         slider.value = root.activeProfileIndex;
                         root.activeProfileError = "";
@@ -224,11 +224,11 @@ PlasmaComponents3.ItemDelegate {
             text: {
                 switch (root.inhibitionReason) {
                 case "lap-detected":
-                    return i18n("Performance mode has been disabled to reduce heat generation because the computer has detected that it may be sitting on your lap.")
+                    return i18nd("plasma_applet_org.kde.plasma.battery", "Performance mode has been disabled to reduce heat generation because the computer has detected that it may be sitting on your lap.")
                 case "high-operating-temperature":
-                    return i18n("Performance mode is unavailable because the computer is running too hot.")
+                    return i18nd("plasma_applet_org.kde.plasma.battery", "Performance mode is unavailable because the computer is running too hot.")
                 default:
-                    return i18n("Performance mode is unavailable.")
+                    return i18nd("plasma_applet_org.kde.plasma.battery", "Performance mode is unavailable.")
                 }
             }
         }
@@ -244,11 +244,11 @@ PlasmaComponents3.ItemDelegate {
             text: {
                 switch (root.degradationReason) {
                 case "lap-detected":
-                    return i18n("Performance may be lowered to reduce heat generation because the computer has detected that it may be sitting on your lap.")
+                    return i18nd("plasma_applet_org.kde.plasma.battery", "Performance may be lowered to reduce heat generation because the computer has detected that it may be sitting on your lap.")
                 case "high-operating-temperature":
-                    return i18n("Performance may be reduced because the computer is running too hot.")
+                    return i18nd("plasma_applet_org.kde.plasma.battery", "Performance may be reduced because the computer is running too hot.")
                 default:
-                    return i18n("Performance may be reduced.")
+                    return i18nd("plasma_applet_org.kde.plasma.battery", "Performance may be reduced.")
                 }
             }
         }
@@ -261,7 +261,7 @@ PlasmaComponents3.ItemDelegate {
 
             visible: root.activeHolds.length > 0 && root.activeProfileData !== undefined
             text: root.activeProfileData !== undefined
-                ? i18np("One application has requested activating %2:",
+                ? i18ndp("plasma_applet_org.kde.plasma.battery", "One application has requested activating %2:",
                         "%1 applications have requested activating %2:",
                         root.activeHolds.length,
                         root.activeProfileData.label)
@@ -283,7 +283,7 @@ PlasmaComponents3.ItemDelegate {
 
                 x: Kirigami.Units.smallSpacing
                 iconSource: icon
-                text: i18nc("%1 is the name of the application, %2 is the reason provided by it for activating performance mode",
+                text: i18ndc("plasma_applet_org.kde.plasma.battery", "%1 is the name of the application, %2 is the reason provided by it for activating performance mode",
                             "%1: %2", name, reason)
             }
         }
@@ -302,10 +302,10 @@ PlasmaComponents3.ItemDelegate {
         PlasmaComponents3.Label {
             visible: !root.profilesAvailable
             text: root.isTlpInstalled
-                ? i18n("The TLP service automatically controls power profiles")
+                ? i18nd("plasma_applet_org.kde.plasma.battery", "The TLP service automatically controls power profiles")
                 : root.profilesInstalled
-                ? i18n("Power profiles are not supported on your device.")
-                : xi18n("Power profiles may be supported on your device.<nl/>Try installing the <command>power-profiles-daemon</command> package using your distribution's package manager and restarting the system.")
+                ? i18nd("plasma_applet_org.kde.plasma.battery", "Power profiles are not supported on your device.")
+                : xi18nd("plasma_applet_org.kde.plasma.battery", "Power profiles may be supported on your device.<nl/>Try installing the <command>power-profiles-daemon</command> package using your distribution's package manager and restarting the system.")
             textFormat: Text.PlainText
             opacity: 0.75
             font: Kirigami.Theme.smallFont

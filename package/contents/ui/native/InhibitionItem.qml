@@ -48,25 +48,25 @@ PlasmaComponents3.ItemDelegate {
     background.visible: highlighted
     highlighted: activeFocus
     hoverEnabled: false
-    text: i18nc("@title:group", "Sleep and Screen Locking after Inactivity")
+    text: i18ndc("plasma_applet_org.kde.plasma.battery", "@title:group", "Sleep and Screen Locking after Inactivity")
 
     Notification {
         id: inhibitionError
         componentName: "plasma_workspace"
         eventId: "warning"
         iconName: "system-suspend-uninhibited"
-        title: i18n("Power Management")
+        title: i18nd("plasma_applet_org.kde.plasma.battery", "Power Management")
     }
 
     Accessible.description: {
         if (root.numActiveIdleInhibitions > 0 && root.numActiveSleepInhibitions > 0) {
-            return i18nc("accessible-only status text", "Automatic sleep and screen locking are currently blocked.");
+            return i18ndc("plasma_applet_org.kde.plasma.battery", "accessible-only status text", "Automatic sleep and screen locking are currently blocked.");
         } else if (root.numActiveIdleInhibitions > 0) {
-            return i18nc("accessible-only status text", "Screen locking is currently blocked. Sleep is automatic after inactivity.");
+            return i18ndc("plasma_applet_org.kde.plasma.battery", "accessible-only status text", "Screen locking is currently blocked. Sleep is automatic after inactivity.");
         } else if (root.numActiveSleepInhibitions > 0) {
-            return i18nc("accessible-only status text", "Sleep is currently blocked. Screen locking is automatic after inactivity.");
+            return i18ndc("plasma_applet_org.kde.plasma.battery", "accessible-only status text", "Sleep is currently blocked. Screen locking is automatic after inactivity.");
         } else { // no active inhibitions
-            return i18nc("accessible-only status text", "Sleep and screen locking are automatic after inactivity.");
+            return i18ndc("plasma_applet_org.kde.plasma.battery", "accessible-only status text", "Sleep and screen locking are automatic after inactivity.");
         }
     }
 
@@ -90,7 +90,7 @@ PlasmaComponents3.ItemDelegate {
             PlasmaComponents3.Switch {
                 id: inhibitionSwitch
                 Layout.fillWidth: true
-                text: i18nc("@action:button Block sleep and screen locking after inactivity", "Manually Block Sleep and Screen Locking")
+                text: i18ndc("plasma_applet_org.kde.plasma.battery", "@action:button Block sleep and screen locking after inactivity", "Manually Block Sleep and Screen Locking")
                 checked: root.isManuallyInhibited
 
                 Keys.onPressed: (event) => {
@@ -112,10 +112,10 @@ PlasmaComponents3.ItemDelegate {
                         if (root.isManuallyInhibitedError) {
                             root.isManuallyInhibitedError = false;
                             if (!root.isManuallyInhibited) {
-                                inhibitionError.text = i18n("Failed to unblock automatic sleep and screen locking");
+                                inhibitionError.text = i18nd("plasma_applet_org.kde.plasma.battery", "Failed to unblock automatic sleep and screen locking");
                                 inhibitionError.sendEvent();
                             } else {
-                                inhibitionError.text = i18n("Failed to block automatic sleep and screen locking");
+                                inhibitionError.text = i18nd("plasma_applet_org.kde.plasma.battery", "Failed to block automatic sleep and screen locking");
                                 inhibitionError.sendEvent();
                             }
                         }
@@ -129,15 +129,15 @@ PlasmaComponents3.ItemDelegate {
 
                 // EU Regulation 2023/826 requires a warning if user disables auto suspend.
                 visible: root.isManuallyInhibited
-                text: i18nc("@label corresponding to Manually Block Sleep and Screen Locking toggle", "This will result in higher energy consumption.")
-                Accessible.description: i18nc("@label accessible - the sentence about higher energy consumption must be included (EU regulations)", "You have manually blocked automatic sleep and screen locking. This will result in higher energy consumption.")
+                text: i18ndc("plasma_applet_org.kde.plasma.battery", "@label corresponding to Manually Block Sleep and Screen Locking toggle", "This will result in higher energy consumption.")
+                Accessible.description: i18ndc("plasma_applet_org.kde.plasma.battery", "@label accessible - the sentence about higher energy consumption must be included (EU regulations)", "You have manually blocked automatic sleep and screen locking. This will result in higher energy consumption.")
             }
 
             InhibitionHint {
                 Layout.fillWidth: true
                 visible: root.inhibitsLidAction
                 iconSource: "computer-laptop"
-                text: i18nc("Minimize the length of this string as much as possible", "Your laptop is configured not to sleep when closing the lid while an external monitor is connected.")
+                text: i18ndc("plasma_applet_org.kde.plasma.battery", "Minimize the length of this string as much as possible", "Your laptop is configured not to sleep when closing the lid while an external monitor is connected.")
             }
 
             Repeater {
@@ -157,34 +157,34 @@ PlasmaComponents3.ItemDelegate {
 
                     iconSource: icon || "wayland"
                     text: {
-                        const why = reason ?? i18nc("An application's reason for inhibiting sleep and/or screen locking", "Unknown reason.");
+                        const why = reason ?? i18ndc("plasma_applet_org.kde.plasma.battery", "An application's reason for inhibiting sleep and/or screen locking", "Unknown reason.");
 
                         const isIdleInhibition = behaviors.includes("idle");
                         const isSleepInhibition = behaviors.includes("sleep");
 
                         if (!allowed) {
                             if (isIdleInhibition && isSleepInhibition) {
-                                return i18nc("Application (1) with reason (2) has been prevented from blocking this inactivity behavior. The user can choose to allow it again.", "%1 wants to block sleep and screen locking. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) has been prevented from blocking this inactivity behavior. The user can choose to allow it again.", "%1 wants to block sleep and screen locking. (%2)", prettyName, why);
                             } else if (isIdleInhibition) {
-                                return i18nc("Application (1) with reason (2) has been prevented from blocking this inactivity behavior. The user can choose to allow it again.", "%1 wants to block screen locking. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) has been prevented from blocking this inactivity behavior. The user can choose to allow it again.", "%1 wants to block screen locking. (%2)", prettyName, why);
                             } else if (isSleepInhibition) {
-                                return i18nc("Application (1) with reason (2) has been prevented from blocking this inactivity behavior. The user can choose to allow it again.", "%1 wants to block sleep. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) has been prevented from blocking this inactivity behavior. The user can choose to allow it again.", "%1 wants to block sleep. (%2)", prettyName, why);
                             }
                         } else if (active && root.isManuallyInhibited) {
                             if (isIdleInhibition && isSleepInhibition) {
-                                return i18nc("Application (1) with reason (2) is currently blocking this inactivity behavior, in addition to the user's manual block switch.", "%1 is also blocking sleep and screen locking. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) is currently blocking this inactivity behavior, in addition to the user's manual block switch.", "%1 is also blocking sleep and screen locking. (%2)", prettyName, why);
                             } else if (isIdleInhibition) {
-                                return i18nc("Application (1) with reason (2) is currently blocking this inactivity behavior, in addition to the user's manual block switch.", "%1 is also blocking screen locking. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) is currently blocking this inactivity behavior, in addition to the user's manual block switch.", "%1 is also blocking screen locking. (%2)", prettyName, why);
                             } else if (isSleepInhibition) {
-                                return i18nc("Application (1) with reason (2) is currently blocking this inactivity behavior, in addition to the user's manual block switch.", "%1 is also blocking sleep. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) is currently blocking this inactivity behavior, in addition to the user's manual block switch.", "%1 is also blocking sleep. (%2)", prettyName, why);
                             }
                         } else if (active) {
                             if (isIdleInhibition && isSleepInhibition) {
-                                return i18nc("Application (1) with reason (2) is currently blocking this inactivity behavior, the user can choose to unblock it.", "%1 is blocking sleep and screen locking. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) is currently blocking this inactivity behavior, the user can choose to unblock it.", "%1 is blocking sleep and screen locking. (%2)", prettyName, why);
                             } else if (isIdleInhibition) {
-                                return i18nc("Application (1) with reason (2) is currently blocking this inactivity behavior, the user can choose to unblock it.", "%1 is blocking screen locking. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) is currently blocking this inactivity behavior, the user can choose to unblock it.", "%1 is blocking screen locking. (%2)", prettyName, why);
                             } else if (isSleepInhibition) {
-                                return i18nc("Application (1) with reason (2) is currently blocking this inactivity behavior, the user can choose to unblock it.", "%1 is blocking sleep. (%2)", prettyName, why);
+                                return i18ndc("plasma_applet_org.kde.plasma.battery", "Application (1) with reason (2) is currently blocking this inactivity behavior, the user can choose to unblock it.", "%1 is blocking sleep. (%2)", prettyName, why);
                             }
                         }
                     }
@@ -192,7 +192,7 @@ PlasmaComponents3.ItemDelegate {
                     PlasmaComponents3.Button {
                         id: suppressInhibitionMenuButton
                         visible: inhibitionHint.allowed
-                        text: i18nc("@action:button Prevent an app from blocking automatic sleep and screen locking after inactivity", "Unblock")
+                        text: i18ndc("plasma_applet_org.kde.plasma.battery", "@action:button Prevent an app from blocking automatic sleep and screen locking after inactivity", "Unblock")
                         icon.name: "edit-delete-remove"
                         onClicked: root.inhibitionAllowedRequested(inhibitionHint.appName, inhibitionHint.reason, false)
                     }
@@ -200,7 +200,7 @@ PlasmaComponents3.ItemDelegate {
                     PlasmaComponents3.Button {
                         id: allowInhibitionMenuButton
                         visible: !inhibitionHint.allowed
-                        text: i18nc("@action:button Undo preventing an app from blocking automatic sleep and screen locking after inactivity", "Allow")
+                        text: i18ndc("plasma_applet_org.kde.plasma.battery", "@action:button Undo preventing an app from blocking automatic sleep and screen locking after inactivity", "Allow")
                         icon.name: "dialog-ok"
                         onClicked: root.inhibitionAllowedRequested(inhibitionHint.appName, inhibitionHint.reason, true)
                     }

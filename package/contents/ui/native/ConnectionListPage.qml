@@ -30,11 +30,11 @@ ColumnLayout {
         type: Kirigami.MessageType.Information
         position: Kirigami.InlineMessage.Position.Header
         icon.name: "dialog-password"
-        text: i18n("You need to log in to this network")
+        text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "You need to log in to this network")
         visible: connectionListPage.nmStatus.connectivity === NMQt.NetworkManager.Portal
 
         actions: Kirigami.Action {
-            text: i18nc("@action:button", "Log in")
+            text: i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@action:button", "Log in")
             onTriggered: {
                 Qt.openUrlExternally(connectionListPage.nmStatus.networkCheckUrl);
             }
@@ -115,25 +115,25 @@ ColumnLayout {
                     }
                     text: {
                         if (toolbar.displayplaneModeMessage) {
-                            return i18n("Airplane mode is enabled")
+                            return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Airplane mode is enabled")
                         }
                         if (toolbar.displayWifiOffMessage) {
                             if (toolbar.displayWwanMessage) {
-                                return i18n("Wi-Fi and mobile data are deactivated")
+                                return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Wi-Fi and mobile data are deactivated")
                             }
-                            return i18n("Wi-Fi is deactivated")
+                            return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Wi-Fi is deactivated")
                         }
                         if (toolbar.displayWifiConnectingMessage) {
-                            return i18n("Looking for Wi-Fi networks")
+                            return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Looking for Wi-Fi networks")
                         }
                         if (toolbar.displayWwanMessage) {
-                            return i18n("Mobile data is deactivated")
+                            return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Mobile data is deactivated")
                         }
                         if (toolbar.searchTextField.text.length > 0) {
-                            return i18n("No matches")
+                            return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "No matches")
                         }
                         if (connectionListPage.nmStatus.connectivity === NMQt.NetworkManager.Full) {
-                            return i18n("No available connections")
+                            return i18nd("plasma_applet_org.kde.plasma.networkmanagement", "No available connections")
                         }
                         return nmStatus.checkUnknownReason()
                     }
@@ -142,16 +142,16 @@ ColumnLayout {
                             return ""
                         }
                         if (toolbar.displayplaneModeMessage) {
-                            return i18nc("@info:placeholder", "Turn off airplane mode to search for networks")
+                            return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:placeholder", "Turn off airplane mode to search for networks")
                         }
                         if (toolbar.displayWifiOffMessage) {
                             if (toolbar.displayWwanMessage) {
-                                return i18nc("@info:placeholder", "Turn on Wi-Fi or mobile data to search for networks")
+                                return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:placeholder", "Turn on Wi-Fi or mobile data to search for networks")
                             }
-                            return i18nc("@info:placeholder", "Turn on Wi-Fi to search for networks")
+                            return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:placeholder", "Turn on Wi-Fi to search for networks")
                         }
                         if (toolbar.displayWwanMessage) {
-                            return i18nc("@info:placeholder", "Turn on mobile data to search for networks")
+                            return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:placeholder", "Turn on mobile data to search for networks")
                         }
                     }
                 }

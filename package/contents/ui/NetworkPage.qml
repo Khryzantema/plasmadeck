@@ -23,6 +23,9 @@ FocusScope {
 
     signal back()
 
+    // Default size of Plasma's Networks popup (20 grid units tall), read by FullRepresentation.
+    readonly property real pagePreferredHeight: Kirigami.Units.gridUnit * 20
+
     // Read by ConnectionItem to refresh the traffic statistics.
     readonly property PlasmaNM.NetworkModel connectionModel: network?.connectionModel ?? null
 

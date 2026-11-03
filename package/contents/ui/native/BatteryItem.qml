@@ -99,16 +99,16 @@ PlasmaComponents3.ItemDelegate {
                         if (root.batteryPluggedIn) {
                             switch (root.batteryChargeState) {
                             case BatteryControlModel.Charging:
-                                return i18n("Charging");
+                                return i18nd("plasma_applet_org.kde.plasma.battery", "Charging");
                             case BatteryControlModel.Discharging:
-                                return i18n("Discharging");
+                                return i18nd("plasma_applet_org.kde.plasma.battery", "Discharging");
                             case BatteryControlModel.FullyCharged:
-                                return i18n("Fully Charged");
+                                return i18nd("plasma_applet_org.kde.plasma.battery", "Fully Charged");
                             default:
-                                return i18n("Not Charging");
+                                return i18nd("plasma_applet_org.kde.plasma.battery", "Not Charging");
                             }
                         }
-                        return i18nc("Battery is currently not present in the bay", "Not present");
+                        return i18ndc("plasma_applet_org.kde.plasma.battery", "Battery is currently not present in the bay", "Not present");
                     }
                     textFormat: Text.PlainText
                     // For non-power supply batteries only show a state when it adds
@@ -126,8 +126,8 @@ PlasmaComponents3.ItemDelegate {
                     horizontalAlignment: Text.AlignRight
                     visible: root.batteryPluggedIn
                     text: root.batteryPercentKnown
-                        ? i18nc("Placeholder is battery percentage", "%1%", root.batteryPercent)
-                        : i18nc("@info Battery percentage is unknown", "Unknown")
+                        ? i18ndc("plasma_applet_org.kde.plasma.battery", "Placeholder is battery percentage", "%1%", root.batteryPercent)
+                        : i18ndc("plasma_applet_org.kde.plasma.battery", "@info Battery percentage is unknown", "Unknown")
                     textFormat: Text.PlainText
                 }
             }
@@ -192,7 +192,7 @@ PlasmaComponents3.ItemDelegate {
                     Layout.columnSpan: 2
 
                     text: root.isBroken
-                        ? i18n("This battery's health is at only %1% and it should be replaced. Contact the manufacturer.", root.batteryCapacity)
+                        ? i18nd("plasma_applet_org.kde.plasma.battery", "This battery's health is at only %1% and it should be replaced. Contact the manufacturer.", root.batteryCapacity)
                         : ""
                     textFormat: Text.PlainText
                     font: Kirigami.Theme.smallFont
@@ -211,14 +211,14 @@ PlasmaComponents3.ItemDelegate {
 
                 LeftLabel {
                     text: root.batteryChargeState === BatteryControlModel.Charging
-                        ? i18n("Time To Full:")
-                        : i18n("Remaining Time:")
+                        ? i18nd("plasma_applet_org.kde.plasma.battery", "Time To Full:")
+                        : i18nd("plasma_applet_org.kde.plasma.battery", "Remaining Time:")
 
                     visible: details.remainingTimeRowVisible || details.isEstimatingRemainingTime
                 }
 
                 RightLabel {
-                    text: details.isEstimatingRemainingTime ? i18nc("@info", "Estimating…")
+                    text: details.isEstimatingRemainingTime ? i18ndc("plasma_applet_org.kde.plasma.battery", "@info", "Estimating…")
                         : KCoreAddons.Format.formatDuration(root.remainingTime, KCoreAddons.FormatTypes.HideSeconds)
                     visible: details.remainingTimeRowVisible || details.isEstimatingRemainingTime
                 }
@@ -228,13 +228,13 @@ PlasmaComponents3.ItemDelegate {
                     && !root.isBroken
 
                 LeftLabel {
-                    text: i18n("Battery Health:")
+                    text: i18nd("plasma_applet_org.kde.plasma.battery", "Battery Health:")
                     visible: details.healthRowVisible
                 }
 
                 RightLabel {
                     text: details.healthRowVisible
-                        ? i18nc("Placeholder is battery health percentage", "%1%", root.batteryCapacity)
+                        ? i18ndc("plasma_applet_org.kde.plasma.battery", "Placeholder is battery health percentage", "%1%", root.batteryCapacity)
                         : ""
                     visible: details.healthRowVisible
                 }
@@ -246,7 +246,7 @@ PlasmaComponents3.ItemDelegate {
 
                 visible: root.pluggedIn && root.batteryIsPowerSupply && root.chargeStopThreshold > 0 && root.chargeStopThreshold < 100
                 iconSource: "kt-speed-limits" // FIXME good icon
-                text: i18n("Battery is configured to charge up to approximately %1%.", root.chargeStopThreshold)
+                text: i18nd("plasma_applet_org.kde.plasma.battery", "Battery is configured to charge up to approximately %1%.", root.chargeStopThreshold)
             }
         }
     }

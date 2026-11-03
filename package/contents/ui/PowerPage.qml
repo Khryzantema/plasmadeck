@@ -20,6 +20,11 @@ FocusScope {
 
     signal back()
 
+    // Like Plasma's Power & Battery popup: as tall as its content, between 10 and 40 grid units.
+    // Read by FullRepresentation.
+    readonly property real pagePreferredHeight: Math.max(Kirigami.Units.gridUnit * 10,
+        Math.min(Kirigami.Units.gridUnit * 40, headerRow.implicitHeight + powerPopup.implicitHeight + column.spacing))
+
     Keys.onEscapePressed: back()
 
     PowerProfilesControl {
@@ -37,10 +42,12 @@ FocusScope {
     }
 
     ColumnLayout {
+        id: column
         anchors.fill: parent
         spacing: Kirigami.Units.smallSpacing
 
         RowLayout {
+            id: headerRow
             Layout.fillWidth: true
             spacing: Kirigami.Units.smallSpacing
 
@@ -60,7 +67,7 @@ FocusScope {
             Kirigami.Heading {
                 Layout.fillWidth: true
                 level: 3
-                text: batteryControl.hasBatteries ? i18n("Power & Battery") : i18n("Power Management")
+                text: batteryControl.hasBatteries ? i18nd("plasma_applet_org.kde.plasma.battery", "Power & Battery") : i18nd("plasma_applet_org.kde.plasma.battery", "Power Management")
                 elide: Text.ElideRight
             }
 
@@ -76,6 +83,7 @@ FocusScope {
         }
 
         PowerPopup {
+            id: powerPopup
             Layout.fillWidth: true
             Layout.fillHeight: true
 

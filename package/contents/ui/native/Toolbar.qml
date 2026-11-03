@@ -45,7 +45,7 @@ RowLayout {
         checkable: true
         checked: handler.hotspotActive
 
-        text: i18n("Hotspot")
+        text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Hotspot")
         display: PlasmaComponents3.AbstractButton.IconOnly
         icon.name: "network-wireless-hotspot"
 
@@ -62,13 +62,13 @@ RowLayout {
         PlasmaComponents3.ToolTip {
             text: {
                 if (!enabledConnections.wirelessEnabled) {
-                    return i18nc("@info:tooltip", "Cannot create a hotspot because Wi-Fi is disabled.")
+                    return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Cannot create a hotspot because Wi-Fi is disabled.")
                 } else if (!handler.hotspotSupported) {
-                    return i18nc("@info:tooltip", "Cannot create a hotspot because all wireless radios are in use. Disconnect from the current Wi-Fi network or connect another wireless radio.")
+                    return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Cannot create a hotspot because all wireless radios are in use. Disconnect from the current Wi-Fi network or connect another wireless radio.")
                 } else if (handler.hotspotActive) {
-                    return i18nc("@info:tooltip", "Disable Hotspot");
+                    return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Disable Hotspot");
                 } else {
-                    return i18nc("@info:tooltip", "Create Hotspot");
+                    return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Create Hotspot");
                 }
             }
         }
@@ -96,14 +96,14 @@ RowLayout {
 
     PlasmaComponents3.ToolButton {
         icon.name: "view-barcode-qr"
-        text: i18nc("@action:button", "Scan Wi-Fi QR Code")
+        text: i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@action:button", "Scan Wi-Fi QR Code")
         enabled: qrca.available
         display: PlasmaComponents3.ToolButton.IconOnly
         Accessible.description: {
             if (qrca.available) {
-                return i18nc("@info:tooltip", "Scan QR Code to connect to a Wi-Fi network");
+                return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Scan QR Code to connect to a Wi-Fi network");
             } else {
-                return i18nc("@info:tooltip", "Install QRCA Barcode Scanner to scan for a QR Code that connects to a Wi-Fi network")
+                return i18ndc("plasma_applet_org.kde.plasma.networkmanagement", "@info:tooltip", "Install QRCA Barcode Scanner to scan for a QR Code that connects to a Wi-Fi network")
             }
         }
 
@@ -122,7 +122,7 @@ RowLayout {
         icon.name: "configure"
 
         PlasmaComponents3.ToolTip {
-            text: i18n("Configure network connections…")
+            text: i18nd("plasma_applet_org.kde.plasma.networkmanagement", "Configure network connections…")
         }
 
         onClicked: {
